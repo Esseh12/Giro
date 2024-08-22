@@ -1,8 +1,9 @@
 import "./App.css";
+import Top from './components/top';
 
 function App() {
   return (
-    <h1>hello world</h1>
+    <Top />
   );
 }
 
