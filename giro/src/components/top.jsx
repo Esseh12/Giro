@@ -1,3 +1,5 @@
+import "../styles/top.css";
+
 function Top() {
   return (
     <div className="top-header-container">
