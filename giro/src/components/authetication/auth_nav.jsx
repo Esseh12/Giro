@@ -1,13 +1,15 @@
 import giro_logo from "../../assets/giro_logo.png";
 import { CiSearch } from "react-icons/ci";
+import "../../styles/navbar.css";
 
 function AuthNavbar() {
   return (
-    <div className="auth-navbar">
+    <nav className="auth-navbar">
       <div className="auth-navbar__logo-container">
         <img src={giro_logo} alt="Giro logo" className="auth-navbar__logo" />
         <h2 className="auth-navbar__title">Giro</h2>
       </div>
+
       <ul className="auth-navbar__menu">
         <li className="auth-navbar__menu-item">
           <a href="#home" className="auth-navbar__link">
@@ -30,15 +32,16 @@ function AuthNavbar() {
           </a>
         </li>
       </ul>
+
       <div className="auth-navbar__search">
         <input
           type="text"
-          placeholder="What are you looking for?"
+          placeholder="Search here....."
           className="auth-navbar__search-input"
         />
-        <CiSearch />
+        <CiSearch className="search_icon" />
       </div>
-    </div>
+    </nav>
   );
 }
 

@@ -1,11 +1,12 @@
-import Top from './components/top';
-import AuthNavbar from './components/authetication/auth_nav';
+import { Routes, Route } from 'react-router-dom';
+import Login from "./components/authetication/login";
 
 function App() {
   return (
     <>
-      <Top />
-      <AuthNavbar />
+      <Routes >
+        <Route path='/login' element={<Login />}/>
+      </Routes>
     </>
   );
 }
