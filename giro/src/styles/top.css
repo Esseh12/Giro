@@ -43,15 +43,24 @@
     }
 
 }
-/* large Mobile view for top component */
+/* medium and large Mobile view for top component */
 @media screen and (min-width: 401px) and (max-width: 759px) {
     .top-header-container {
         display: flex;
         flex-direction: column;
+        text-align: center;
         gap: 8px;
-        font-size: 0.8rem;
+        font-size: 1rem;
         padding-top: 1rem;
         padding-left: 0;
+    }
+
+    .top-header-container span {
+        display: none;
+    }
+
+     .top-header-container p{
+        font-size: 0.95rem;
     }
 
 }

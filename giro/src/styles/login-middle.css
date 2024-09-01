@@ -1,0 +1,85 @@
+.login-middle {
+    display: flex;
+    padding: 2rem 0rem 3rem 0rem;
+    gap: 10%;
+    max-height: 85vh;
+    font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    font-optical-sizing: auto;
+}
+
+.login-middle__image {
+    max-width: 45vw;
+}
+
+.login-middle__content {
+    width: 30vw;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 1.5rem;
+}
+
+.login-middle__text {
+    display: flex;
+    flex-direction: column;
+}
+
+.login-middle__title {
+    font-size: 3rem;
+    font-weight: 500;
+    margin-bottom: 0.9rem;
+}
+
+.login-middle__description {
+    font-size: 1.2rem;
+    font-weight: 500;
+}
+
+.login-middle__form {
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+}
+
+.login-middle__input {
+    border: none;
+    border-bottom: 1px solid var(--primary-border-color);
+    padding: 1rem 0.75rem 0.45rem;
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    font-size: 1.2rem;
+    margin-top: 2rem;
+}
+
+.login-middle__description::placeholder {
+    font-weight: 400;
+    color: #f4f4f4;
+}
+
+.login-actions{
+    display: flex;
+    justify-content: center;
+    margin-top: 2rem;
+}
+
+.login-button{
+    width: 50%;
+    padding: 1rem 0rem;
+    text-align: center;
+    background-color: var(--primary-red);
+    color: white;
+    border: 1px solid var(--primary-red);
+    border-radius: 8px;
+    font-size: 1.04rem;
+    letter-spacing: 2px;
+}
+
+.login-button:hover {
+    background-color: var(--button-hover-color);
+}
+
+.forgot-password-link{
+    color: var(--primary-red);
+    text-align: right;
+    text-decoration: none;
+    font-weight: 1.54rem;
+}
