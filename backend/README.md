@@ -19,6 +19,7 @@ Depending on your environment, you may need to install the python-dotenv package
 
 
 ### Advised to run this in a virtual enviroment
-```python3 -m venv venv
+```
+python3 -m venv venv
     source venv/bin/activate
 ```
