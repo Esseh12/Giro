@@ -1,15 +1,16 @@
 -- CREATE TABLES
 
 -- DROP TABLE IF EXISTS users;
--- CREATE TABLE IF NOT EXISTS users(
---     id VARCHAR(255),
---     firstname VARCHAR(20),
---     lastname VARCHAR(20),
---     email VARCHAR(50),
---     phone_number VARCHAR(20),
---     password VARCHAR()
--- );
--- 
+CREATE TABLE IF NOT EXISTS users(
+    id VARCHAR(255),
+    firstname VARCHAR(20) NOT NULL,
+    lastname VARCHAR(20) NOT NULL,
+    email VARCHAR(50) NOT NULL UNIQUE,
+    phone_number VARCHAR(20),
+    password VARCHAR NOT NULL,
+    address TEXT
+);
+
 /*
     cur.execute("SELECT id, name, price, discount, rating, image_url FROM products WHERE discount != null;")
     flash_sales_products = cur.fetchall()

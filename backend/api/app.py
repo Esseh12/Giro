@@ -1,11 +1,13 @@
 #!/usr/bin/env python3
 
 ########## imports ##########
-from flask import Flask, jsonify, abort
+from flask import Flask, jsonify, abort, request
 from markupsafe import escape
 import os
 import sqlite3
 from dotenv import load_dotenv
+from werkzeug.security import generate_password_hash, check_password_hash
+from uuid import uuid4
 # from os import path
 #############################
 
@@ -100,6 +102,45 @@ def single_product(id):
     cur.close()
     db.close()
     return jsonify({'data': {'product': product, 'related_products': related_products}})
+
+@app.route("/signup", methods=["POST"])
+def signup():
+    try:
+        data = request.json
+    except:
+        abort(400, "Expect JSON: Invalid json body")
+    fname = data.get('firstname')
+    lname = data.get('lastname')
+    email = data.get('email')
+    phone = data.get('phone_number')
+    passwd = data.get('password')
+    
+    for i in [fname, lname, email, passwd]:
+        if i == None:
+            abort(400, 'Required: firstname, lastname, email, password')
+    
+    passwd = generate_password_hash(passwd)
+
+    db = get_db()
+    cur = db.cursor()
+    
+    id = str(uuid4())
+    try:
+        cur.execute("INSERT INTO users (id, firstname, lastname, email, phone_number, password) VALUES(?, ?, ?, ?, ?, ?)", (id, fname, lname, email, phone, passwd))
+        db.commit()
+    except sqlite3.IntegrityError:
+        cur.close()
+        db.close()
+        return jsonify({"error": "Email exists!"})
+
+
+    cur.execute("SELECT id, address, email, firstname, lastname, phone_number FROM users WHERE id = ?", (id, ))
+    user = dict(cur.fetchone())
+    cur.close()
+    db.close()
+
+    return jsonify({'data': user}), 201
+
 
 @app.errorhandler(404)
 def handle_404(error):
