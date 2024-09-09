@@ -23,3 +23,13 @@ Depending on your environment, you may need to install the python-dotenv package
 python3 -m venv venv
 source venv/bin/activate
 ```
+
+## Available endpoints
+
+```
+GET /
+Returns: { flash sales, best selling, all products }
+
+GET /products/id
+Return a single product
+```
