@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 
 ########## imports ##########
-from flask import Flask, jsonify
+from flask import Flask, jsonify, abort
 from markupsafe import escape
 import os
 import sqlite3
@@ -77,8 +77,34 @@ def index():
 
 @app.route("/products/<id>", methods=["GET"])
 def single_product(id):
-    print(id)
-    return jsonify({'data': {'product': escape(id), 'related_products': []}})
+    if len(id) != 36:
+        abort()
+    
+    db = get_db()
+    cur = db.cursor()
+    cur.execute("SELECT * FROM products WHERE id=?;", (escape(id), ))
+    product = cur.fetchall()
+    
+    if not product:
+        cur.close()
+        db.close()
+        abort(404)
+    product = dict(product[0])
+
+    category = product['category_name']
+    
+    cur.execute("SELECT id, name, price, discount, rating, image_url FROM products WHERE category_name = ?;", (category, ))
+    
+    related_products = [dict(row) for row in cur.fetchall()]
+
+    cur.close()
+    db.close()
+    return jsonify({'data': {'product': product, 'related_products': related_products}})
+
+@app.errorhandler(404)
+def handle_404(error):
+    print(error)
+    return jsonify({"error": 'Not Found'}), 404
 
 if __name__ == "__main__":
     load_dotenv()

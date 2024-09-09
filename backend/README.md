@@ -31,5 +31,7 @@ GET /
 Returns: { flash sales, best selling, all products }
 
 GET /products/id
-Return a single product
+Return a single product with details and related products. 
+
+
 ```

@@ -31,7 +31,9 @@ CREATE TABLE IF NOT EXISTS products(
     rating INTEGER CHECK(rating IN (1, 2, 3, 4, 5)),
     image_url VARCHAR(50),
     is_new BOOLEAN DEFAULT 0,
-    category_name VARCHAR(36)
+    category_name VARCHAR(36),
+    stock INTEGER,
+    description TEXT
 );
 
 -- CATEGORIES TABLE
