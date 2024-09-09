@@ -33,5 +33,7 @@ Returns: { flash sales, best selling, all products }
 GET /products/id
 Return a single product with details and related products. 
 
-
+POST /signup
+Expects a json body: firstname, lastname, email, password, phone_number (only phone_number is optional, email must be unique)
+Return a json of newly created user with its id
 ```
