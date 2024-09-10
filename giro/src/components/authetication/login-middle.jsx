@@ -1,7 +1,16 @@
+import { useState } from "react";
 import "../../styles/login-middle.css";
 import loginImage from "../../assets/Side Image.svg";
+import { TbEyeClosed } from "react-icons/tb";
+import { RxEyeOpen } from "react-icons/rx";
 
 const LoginMiddle = () => {
+  const [isEyeClosed, setIsEyeClose] = useState(true);
+
+  const handleEyeOpen = () => {
+    setIsEyeClose(!isEyeClosed);
+  };
+
   return (
     <div className="login-middle">
       <img
@@ -19,21 +28,30 @@ const LoginMiddle = () => {
           <input
             type="email"
             placeholder="Enter your Email"
-            className="login-middle__input"
+            className="login-middle__input email_input"
           />
-          <input
-            type="password"
-            placeholder="Password"
-            className="login-middle__input"
-          />
+          <div className="input_password_container">
+            <input
+              type={isEyeClosed ? "password" : "text"}
+              placeholder="Password"
+              className="login-middle__input"
+            />
+            {isEyeClosed ? (
+              <TbEyeClosed className="opened_eye" onClick={handleEyeOpen} />
+            ) : (
+              <RxEyeOpen className="opened_eye" onClick={handleEyeOpen} />
+            )}
+          </div>
           <a href="#forgot-password" className="forgot-password-link">
             Forgot Password?
           </a>
-        </form>
 
-        <div className="login-actions">
-          <button className="login-button">Login</button>
-        </div>
+          <div className="login-actions">
+            <button type="button" className="login-button">
+              Login
+            </button>
+          </div>
+        </form>
       </div>
     </div>
   );

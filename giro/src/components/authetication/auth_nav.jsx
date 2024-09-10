@@ -1,7 +1,7 @@
 import { NavLink } from "react-router-dom";
 import giro_logo from "../../assets/giro_logo.png";
 import { CiSearch } from "react-icons/ci";
-import "../../styles/navbar.css";
+import "../../styles/authNav.css";
 
 function AuthNavbar() {
   return (
