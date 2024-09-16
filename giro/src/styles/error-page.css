@@ -1,0 +1,43 @@
+.error-page{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 90vh;
+}
+
+.error-page__image{
+    max-width: 40rem;
+    max-height: auto;
+}
+
+.error-page__description{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 1.2rem;
+}
+
+.error-page__title{
+    font-size: 2.2rem;
+    font-weight: 600;
+}
+
+.error-page__button{
+    color: var(--primary-text-lightcolor);
+    background-color: #f44c57;
+    border: #f44c57;
+    border-radius: 0.35rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 3.3rem;
+    width: 12rem;
+    font-size: 1rem;
+    font-weight: 400;
+}
+
+.error-page__button:hover{
+    background-color: var(--button-hover-color);
+}
