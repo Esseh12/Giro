@@ -435,7 +435,18 @@
     .info-container p {
         font-size: 1.1rem;
     }
+
+    /* meet the teamate styling */
+    .react-multi-carousel-list {
+        padding: 0rem;
+    }
+    
+    .react-multi-carousel-track {
+         gap: 0rem;
+    }
 }
+
+/* make reponsive design for small ipads between 760px and 900px */
 
 @media screen and (min-width: 760px) and (max-width: 1100px) {
     .about-container {
