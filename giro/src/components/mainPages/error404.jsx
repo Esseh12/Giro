@@ -1,5 +1,6 @@
 import Navbar from "../navbar";
 import Footer from "../footer";
+import Top from "../top";
 import { useNavigate } from "react-router-dom";
 import "../../styles/error-page.css";
 import errorImg from "../../assets/error-404.png";
@@ -13,6 +14,7 @@ const Error404 = () => {
 
   return (
     <>
+      <Top />
       <Navbar />
       <div className="error-page">
         <div className="error-page__image-container">
