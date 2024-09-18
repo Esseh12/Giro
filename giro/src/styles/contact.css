@@ -1,0 +1,352 @@
+.contact-page{
+    display: flex;
+    height: 90vh;
+    justify-content: center;
+    align-items: center;
+    gap: 2.5rem;
+}
+
+.contact-card{
+    background-color: #fff;
+    border: 1px solid #fff;
+    border-radius: 0.65rem;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+    padding: 2rem;
+    height: calc(90vh - 28vh);
+}
+
+.contact-card-top{
+    border-bottom: 2.5px solid #cfcfcf;
+    display: flex;
+    gap: 1rem;
+    flex-direction: column;
+    padding: 1rem 0rem 2rem 0rem;
+}
+
+.contact-card-bottom{
+    padding: 2rem 0rem 1rem 0rem;
+    display: flex;
+    gap: 1rem;
+    flex-direction: column;
+}
+
+.icon-container{
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+}
+
+.icon-sub-container{
+    border: 1px solid var(--primary-red);
+    background-color: var(--primary-red);
+    border-radius: 999px;
+    width: 2.2rem;
+    height: 2.2rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--primary-text-lightcolor);
+}
+
+.contact-icon{
+    font-size: 1.1rem;
+    font-weight: 600;
+}
+
+.contact-link{
+    color: #000000;
+    text-decoration: none;
+}
+
+/* send a message card */
+.message-form{
+    border: 1px solid var(--primary-text-lightcolor);
+    background-color: var(--primary-text-lightcolor);
+    border-radius: 0.65rem;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    height: calc(90vh - 28vh);
+    padding: 2rem;
+}
+
+.message-form-inputs{
+    display: flex;
+    justify-content: space-evenly;
+    gap: 1rem;
+}
+
+.input-field{
+    border: 1px solid #f5f5f5;
+    background-color: #f5f5f5;
+    border-radius: 0.35rem;
+    padding: 1rem 0.75rem;
+    width: 16rem;
+    font-size: 1.01rem;
+}
+
+.input-message{
+    resize: none;
+    height: 15rem;
+    width: calc(16rem * 3 + 2rem);
+}
+
+.send-message-btn{
+    background-color: var(--primary-red);
+    border: var(--primary-red);
+    border-radius: 0.45rem;
+    color: var(--primary-text-lightcolor);
+    margin-left: auto;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 3.5rem;
+    width: 11rem;
+    font-size: 1.01rem;
+}
+
+/* small devices styling for about page */
+@media screen and (min-width: 200px) and (max-width: 324px) {
+    .contact-page{
+        flex-direction: column-reverse;
+        height: 200vh;
+        gap: 1.5rem;
+    }
+
+    .message-form{
+        display: flex;
+        flex-direction: column;
+        gap: 1rem;
+        height: 92vh;
+        padding: 2rem;
+        border-radius: 0rem;
+        border: none;
+        box-shadow: none;
+    }
+
+    .message-form-inputs{
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        gap: 0.95rem;
+    }
+
+    .input-message{
+        height: 10rem;
+        width: calc(16rem);
+    }
+
+    .contact-card{
+        box-shadow: 4px 4px 6px 8px rgba(0, 0, 0, 0.1);
+        height: auto;
+        max-width: 90vw;
+    }
+
+    .contact-card p{
+        font-size: 1.1rem;
+    }
+
+    .contact-card br{
+        display: none;
+    }
+
+    .contact-card a{
+        font-size: 1.1rem;
+    }
+
+    .form-text{
+        line-height: 1.6rem;
+    }
+}
+
+/* medium size devices */
+@media screen and (min-width: 325px) and (max-width: 400px) {
+     .contact-page{
+        flex-direction: column-reverse;
+        height: 159vh;
+        gap: 1.3rem;
+        /* background-color: red; */
+    }
+
+    .message-form{
+        display: flex;
+        flex-direction: column;
+        gap: 1rem;
+        height: 75vh;
+        padding: 1rem;
+        border-radius: 0rem;
+        border: none;
+        box-shadow: none;
+    }
+
+    .message-form-inputs{
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        gap: 1.1rem;
+    }
+
+    .input-field{
+        width: 18rem;
+        font-size: 1.1rem;
+    }
+
+    .input-message{
+        height: 10rem;
+        line-height: 1.7rem;
+    }
+
+    .contact-card{
+        box-shadow: 4px 4px 6px 8px rgba(0, 0, 0, 0.1);
+        height: auto;
+        max-width: 80vw;
+    }
+
+    .contact-card p{
+        font-size: 1.1rem;
+    }
+
+    .contact-card br{
+        display: none;
+    }
+
+    .contact-card a{
+        font-size: 1.1rem;
+    }
+
+    .form-text{
+        line-height: 1.6rem;
+    }
+}
+
+@media screen and (min-width: 401px) and (max-width: 759px) {
+    .contact-page{
+        flex-direction: column-reverse;
+        height: 139vh;
+        gap: 3rem;
+    }
+
+    .message-form{
+        display: flex;
+        flex-direction: column;
+        gap: 1.2rem;
+        height: 60.5vh;
+        padding: 1rem;
+        border-radius: 0rem;
+        border: none;
+        box-shadow: none;
+    }
+
+    .message-form-inputs{
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        gap: 1.1rem;
+    }
+
+    .input-field{
+        width: 21rem;
+        font-size: 1.2rem;
+    }
+
+    .input-message{
+        height: 10rem;
+        line-height: 1.7rem;
+    }
+
+    .contact-card{
+        box-shadow: 4px 4px 6px 8px rgba(0, 0, 0, 0.1);
+        height: auto;
+        max-width: 90vw;
+    }
+
+    .contact-card p{
+        font-size: 1.1rem;
+    }
+
+    .contact-card br{
+        display: none;
+    }
+
+    .contact-card a{
+        font-size: 1.1rem;
+    }
+
+    .form-text{
+        line-height: 1.6rem;
+    }
+}
+
+/* make reponsive design for small ipads between 760px and 900px */
+
+@media screen and (min-width: 760px) and (max-width: 1100px) {
+    .contact-page{
+        flex-direction: column-reverse;
+        height: 125vh;
+        gap: 5rem;
+    }
+
+    .message-form{
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 1.2rem;
+        height: 61vh;
+        padding: 3rem;
+        border-radius: 0rem;
+        border: none;
+        box-shadow: none;
+    }
+
+    .message-form-inputs{
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        gap: 2rem;
+    }
+
+    .input-field{
+        width: 75vw;
+        font-size: 1.9rem;
+        padding: 1rem;
+    }
+
+    .input-message{
+        height: 15rem;
+        line-height: 1.7rem;
+    }
+
+    .send-message-btn{
+        height: 5rem;
+        padding: 1rem;
+        width: 11rem;
+        font-size: 1.29rem;
+    }
+
+    .contact-card{
+        box-shadow: 4px 4px 4px 4px rgba(0, 0, 0, 0.1);
+        height: auto;
+        width: 75vw;
+    }
+
+    .contact-card p{
+        font-size: 1.6rem;
+    }
+
+    .contact-card br{
+        display: none;
+    }
+
+    .contact-card a{
+        font-size: 1.6rem;
+    }
+
+    .form-text{
+        line-height: 2.2rem;
+    }
+}
