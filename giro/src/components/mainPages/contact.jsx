@@ -1,5 +1,6 @@
 import Navbar from "../navbar";
 import Footer from "../footer";
+import Top from "../top";
 import { useRef } from "react";
 import emailjs from "emailjs-com";
 import "../../styles/contact.css";
@@ -37,6 +38,7 @@ const Contact = () => {
 
   return (
     <>
+      <Top />
       <Navbar />
       {/* Contact page container */}
       <div className="contact-page">
