@@ -1,5 +1,7 @@
 import Navbar from "../navbar";
 import Footer from "../footer";
+import { useRef } from "react";
+import emailjs from "emailjs-com";
 import "../../styles/contact.css";
 import { FaPhoneAlt } from "react-icons/fa";
 import { IoIosMail } from "react-icons/io";
@@ -7,31 +9,31 @@ import { IoIosMail } from "react-icons/io";
 const Contact = () => {
   // using email.js to send the form to mail
   // npm install emailjs-com sign up for emailjs
-  //    const form = useRef();
+  const form = useRef();
 
-  //    const sendEmail = (e) => {
-  //      e.preventDefault();
+  const sendEmail = (e) => {
+    e.preventDefault();
 
-  //      emailjs
-  //        .sendForm(
-  //          "YOUR_SERVICE_ID",
-  //          "YOUR_TEMPLATE_ID",
-  //          form.current,
-  //          "YOUR_USER_ID"
-  //        )
-  //        .then(
-  //          (result) => {
-  //            console.log(result.text);
-  //            alert("Message sent successfully!");
-  //          },
-  //          (error) => {
-  //            console.log(error.text);
-  //            alert("Failed to send the message. Please try again.");
-  //          }
-  //        );
+    emailjs
+      .sendForm(
+        "service_8uzuran",
+        "template_y5c9ske",
+        form.current,
+        "mQ786bE_HqQUYLj1u"
+      )
+      .then(
+        (result) => {
+          console.log(result.text);
+          alert("Message sent successfully!");
+        },
+        (error) => {
+          console.log(error.text);
+          alert("Failed to send the message. Please try again.");
+        }
+      );
 
-  //      e.target.reset();
-  //    };
+    e.target.reset();
+  };
 
   return (
     <>
@@ -62,7 +64,7 @@ const Contact = () => {
               </div>
               <p>Write Us</p>
             </div>
-            <p>
+            <p class="form-text">
               Fill out our form and we will contact <br />
               you within 24 hours
             </p>
@@ -76,23 +78,26 @@ const Contact = () => {
         </div>
 
         {/* Send a message form */}
-        <form className="message-form">
+        <form className="message-form" ref={form} onSubmit={sendEmail}>
           <div className="message-form-inputs">
             <input
               className="input-field input-text"
               type="text"
-              placeholder="Your Name"
+              name="user_name"
+              placeholder="Your FullName"
               required
             />
             <input
               className="input-field input-email"
               type="email"
+              name="user_email"
               placeholder="Your Email"
               required
             />
             <input
               className="input-field input-tel"
               type="tel"
+              name="user_phone"
               placeholder="Your Phone Number"
               required
             />
@@ -101,9 +106,13 @@ const Contact = () => {
             <textarea
               className="input-field input-message"
               placeholder="Your Message"
+              name="message"
+              required
             />
           </div>
-          <button className="send-message-btn">Send Message</button>
+          <button type="submit" className="send-message-btn">
+            Send Message
+          </button>
         </form>
       </div>
 
