@@ -68,4 +68,104 @@
 
 .navbar-icon{
     font-size: 1.45rem;
+    color: var(--primary-black);
+}
+
+/* .user-icon-container:hover{
+    background-color: var(--primary-red);
+    color: var(--primary-text-lightcolor);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 999px;
+    height: 2.0rem;
+    width: 2.0rem;
+}
+
+.user-icon:hover{
+    color: var(--primary-text-lightcolor);
+    font-size: 1.3rem;
+} */
+
+
+/* Container for the user icon and dropdown */
+.user-icon-container {
+    position: relative;
+    display: inline-block;
+    transition: background-color 0.3s ease;
+}
+
+/* Change background on click */
+
+.user-icon-container:hover,
+.user-icon-container.active {
+    background-color: var(--primary-red);
+    color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 999px;
+    height: 2.1rem;
+    width: 2.1rem;
+}
+
+/* Dropdown content */
+.dropdown-content {
+    position: absolute;
+    top: 50px;
+    right: 0;
+    background-color: rgba(115, 113, 113, 0.2);
+    /* Glass background effect */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+    backdrop-filter: blur(20px);
+    /* Blur for glassmorphism */
+    -webkit-backdrop-filter: blur(10px);
+    /* Safari support */
+    border-radius: 10px;
+    width: 20vw;
+    padding: 10px;
+    z-index: 10;
+}
+
+/* Each item in the dropdown */
+.dropdown-content-subcontainer {
+    display: flex;
+    align-items: center;
+    padding: 0.85rem;
+    transition: background-color 0.3s ease;
+    color: var(--primary-text-lightcolor);
+}
+
+.dropdown-content-subcontainer:hover {
+    background-color: rgba(104, 99, 99, 0.3);
+    /* Slight hover effect */
+    border-radius: 5px;
+    color: var(--primary-text-lightcolor);
+}
+
+.dropdown-content-subcontainer a {
+    margin-left: 10px;
+    text-decoration: none;
+    color: var(--primary-text-lightcolor)
+}
+
+.dropdown-icon{
+    color: var(--primary-text-lightcolor);
+}
+
+/* Ensure the dropdown content has a smooth fade-in effect */
+.glass-bg {
+    animation: fadeIn 0.3s ease;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(-10px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
 }

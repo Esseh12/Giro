@@ -20,22 +20,22 @@ function AuthNavbar() {
 
         <ul className="auth-navbar__menu">
           <li className="auth-navbar__menu-item">
-            <NavLink to="#home" className="auth-navbar__link">
+            <NavLink to="/" className="auth-navbar__link">
               Home
             </NavLink>
           </li>
           <li className="auth-navbar__menu-item">
-            <NavLink to="#contact" className="auth-navbar__link">
+            <NavLink to="/contact" className="auth-navbar__link">
               Contact
             </NavLink>
           </li>
           <li className="auth-navbar__menu-item">
-            <NavLink to="#about" className="auth-navbar__link">
+            <NavLink to="/about" className="auth-navbar__link">
               About
             </NavLink>
           </li>
           <li className="auth-navbar__menu-item">
-            <NavLink to="#signup" className="auth-navbar__link">
+            <NavLink to="/login" className="auth-navbar__link">
               Sign Up
             </NavLink>
           </li>
