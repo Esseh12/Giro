@@ -1,0 +1,116 @@
+.homepage-container{
+  display: flex;
+  flex-direction: column;
+  width: 100vw;
+  gap: 1.2rem;
+}
+
+/* top section for homepaage */
+.promo-section{
+    display: flex;
+    justify-content: space-evenly;
+}
+
+.category-links{
+    display: flex;
+    flex-direction: column;
+    gap: 1.3rem;
+    border-right: 1px solid var(--primary-border-color);
+    padding-right: 4rem;
+}
+
+.first-category-link{
+    margin-top: 3.7rem;
+}
+
+.category-link{
+    text-decoration: none;
+    color: var(--primary-black);
+}
+
+.category-link:hover{
+    color: var(--primary-red);
+}
+
+.promo-content{
+    margin-top: 3rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    color: var(--primary-lightgrey);
+    background-color: var(--primary-black);
+    width: 63vw;
+}
+
+.promo-details{
+    display: flex;
+    flex-direction: column;
+    gap: 1.4rem;
+    margin-left: 4rem;
+}
+
+.promo-product-info{
+    display: flex;
+    align-items: center;
+    gap: 0.55rem;
+}
+
+.promo-discount{
+    font-size: 2.9rem;
+    line-height: 1.35;
+}
+
+.promo-large-image{
+    margin-top: 1rem;
+}
+
+.promo-shop-button{
+    display: flex;
+    align-items: center;
+    gap: 0.55rem;
+}
+
+.shop-now-link{
+    text-decoration: none;
+    color: var(--primary-text-lightcolor);
+}
+
+.shop-now-link:hover{
+    border-bottom: 1px solid var(--primary-border-color);
+}
+
+/* new arrival container */
+.new-arrivals-section{
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    padding-left: 8rem;
+}
+
+.new-arrivals-header{
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+}
+
+.new-arrivals-icon{
+    background-color: var(--primary-red);
+    border: 1px solid var(--primary-red);
+    border-radius: 6px;
+    height: 2.3rem;
+    width: 1.1rem;
+}
+
+.new-arrivals-title{
+    color: var(--primary-red);
+    font-size: 1.1rem;
+    font-weight: 600;
+}
+
+.new-arrivals-item{
+    background-color: var(--primary-black);
+    color: var(--primary-text-lightcolor);
+    display: flex;
+    flex-direction: row-reverse;
+    width: auto;
+}
