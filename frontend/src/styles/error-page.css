@@ -1,0 +1,152 @@
+/* write a rule for bigger desktop */
+
+.error-page{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+.error-page__image{
+    max-width: 40rem;
+    max-height: auto;
+}
+
+.error-page__description{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 1.2rem;
+}
+
+.error-page__title{
+    font-size: 2.2rem;
+    font-weight: 600;
+}
+
+.error-page__button{
+    color: var(--primary-text-lightcolor);
+    background-color: #f44c57;
+    border: #f44c57;
+    border-radius: 0.35rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 3.3rem;
+    width: 12rem;
+    font-size: 1rem;
+    font-weight: 400;
+}
+
+.error-page__button:hover{
+    background-color: var(--button-hover-color);
+}
+
+/* small devices styling for 404 page */
+@media screen and (min-width: 200px) and (max-width: 324px) {
+    .error-page{
+        text-align: center;
+    }
+
+    .error-page__image{
+        max-width: 19.2rem;
+    }
+
+    .error-page__description{
+        gap: 1rem;
+    }
+
+    .error-page__title{
+        font-size: 1.7rem;
+        font-weight: 500;
+    }
+
+    .error-page__message{
+        padding: 0rem 0.55rem;
+        font-size: 1rem;
+        line-height: 1.6;
+    }
+
+
+    .error-page__button{
+        width: 11.3rem;
+        margin-top: 0.75rem;
+        letter-spacing: 1.2px;
+    }
+}
+
+@media screen and (min-width: 325px) and (max-width: 400px) {
+    .error-page{
+        text-align: center;
+    }
+
+    .error-page__image{
+        max-width: 21.5rem;
+    }
+
+     .error-page__title{
+        font-size: 1.8rem;
+        font-weight: 500;
+    }
+
+    .error-page__message{
+        padding: 0rem 0.55rem;
+        font-size: 1rem;
+        line-height: 1.6;
+    }
+
+    .error-page__button {
+        width: 11.3rem;
+        margin-top: 0.55rem;
+        letter-spacing: 1.2px;
+    }
+}
+
+@media screen and (min-width: 401px) and (max-width: 759px) {
+    .error-page {
+        text-align: center;
+        height: 78vh;
+    }
+
+    .error-page__image{
+        max-width: 23.8rem;
+    }
+
+    .error-page__message{
+        padding: 0rem 0.46rem;
+        font-size: 1.1rem;
+        line-height: 1.6;
+    }
+}
+
+@media screen and (min-width: 760px) and (max-width: 1100px) {
+    .error-page {
+        height: 73vh;
+    }
+
+    .error-page__image{
+        max-width: 42rem;
+    }
+
+    .error-page__title{
+        font-size: 2.4rem;
+        font-weight: 500;
+    }
+
+    .error-page__message{
+        padding: 0rem 0.46rem;
+        font-size: 1.4rem;
+        line-height: 1.6;
+        font-weight: 500;
+    }
+
+    .error-page__button{
+        height: 3.8rem;
+        width: 14.8rem;
+        margin-top: 0.75rem;
+        letter-spacing: 1.2px;
+        font-size: 1.2rem;
+    }
+}
