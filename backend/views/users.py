@@ -85,3 +85,27 @@ def login():
   return res, 200
 
 
+@users.get('/profile')
+def profile():
+  # print(list(request.cookies.items()))
+  user_id = request.cookies.get('token')
+  if not user_id:
+    abort(401, "Not Authorized: You are not logged in!")
+  
+  db = getDB()
+  cur = db.cursor()
+  cur.execute('SELECT address, email, firstname, lastname, id, phone_number FROM users WHERE id = ?', (user_id, ))
+  user = cur.fetchone()
+
+  return jsonify({"data": dict(user), 'status': 200})
+
+
+@users.get('/logout')
+def logout():
+  res = make_response(
+    jsonify(
+      {'msg': 'logged out successfully', 'status': 200}
+    )
+  )
+  res.set_cookie('token', '', expires=0)
+  return res

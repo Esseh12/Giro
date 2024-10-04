@@ -1,7 +1,7 @@
 from flask import Flask, jsonify
 import os
-from views.products import products
 from views.index import index
+from views.products import products
 from views.users import users
 from models.db import initDB
 
@@ -10,6 +10,7 @@ initDB()
 
 # initialize flask app
 app = Flask(__name__)
+# app.config['FLASK_PORT'] = 5050
 app.url_map.strict_slashes = False
 
 # register all blueprints
@@ -21,6 +22,11 @@ app.register_blueprint(users, url_prefix='/auth')
 @app.errorhandler(400)
 def handle_400(error):
   return jsonify({'error': error.description, 'status': error.code}), 400
+
+@app.errorhandler(401)
+def handle_400(error):
+  return jsonify({'error': error.description, 'status': error.code}), 401
+
 
 @app.errorhandler(403)
 def handle_403(error):
