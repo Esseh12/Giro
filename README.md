@@ -21,6 +21,8 @@ Welcome to Giro, an eCommerce platform designed for easy and seamless shopping. 
 - Fully responsive and mobile-friendly design
 - Gallery section for showcasing products
 
+## Tech Stack
+
 ## Installation
 
 1. Clone the repository:
