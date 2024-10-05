@@ -99,6 +99,7 @@
     font-weight: 1.54rem;
 }
 
+/* for small mobile devices like 1phone 5 and 1phone se */
 @media screen and (min-width: 200px) and (max-width: 400px){
     .login-middle__image {
         display: none;
@@ -190,5 +191,174 @@
     .login-middle__description {
         font-size: 1.1rem;
         text-align: center;
+    }
+}
+
+
+/* sign up jsx styling */
+/*==============  signup styling starts here ===========*/
+.signup-container{
+    display: flex;
+    height:  auto;
+    padding: 4rem 0rem;
+    gap: 10%;
+}
+
+.signup-image{
+    height: 48rem;
+    width: 50rem;
+}
+
+.signup-form-container{
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+    margin-top: 2.2rem;
+}
+
+.signup-form{
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+    margin-top: 1rem;
+    align-items: center;
+}
+
+.signup-title{
+    font-size: 2.5rem;
+}
+
+.signup-subtitle{
+    color: var(--primary-border-color);
+}
+
+.signup-input{
+    border: 1px solid var(--primary-border-color);
+    border-radius: 10px;
+    padding: 1rem;
+    width: 23.5rem;
+    font-size: 1.075rem;
+}
+
+.signup-input::placeholder {
+    color: var(--primary-border-color);
+}
+
+.signup-input--password{
+    border: none;
+}
+
+.password-container{
+    display: flex;
+    align-items: center;
+    justify-self: center;
+    position: relative;
+    border: 1px solid var(--primary-border-color);
+    border-radius: 10px;
+    padding: 0rem;
+    width: 23.5rem;
+    font-size: 1.075rem;
+}
+
+.signup-open_eye{
+    position: absolute;
+    left: 90%;
+    font-size: 1.5rem;
+}
+
+.signup-button{
+    width: 23.5rem;
+    padding: 0.75rem;
+    border-radius: 5px;
+    font-size: 1.05rem;
+}
+
+.signup-button--submit{
+    color: var(--primary-text-lightcolor);
+    background-color: var(--primary-red);
+    border: 1px solid var(--primary-red);
+    padding: 1rem;
+}
+
+.signup-google-container{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid var(--primary-border-color);
+    gap: 0.55rem;
+}
+
+.signup-google-button{
+    border: none;
+    background-color: var(--primary-text-lightcolor);
+    font-size: 1.05rem;
+}
+
+.signup-login-link{
+    color: var(--primary-black);
+    text-decoration: none;
+    border-bottom: 1px solid var(--primary-black);
+    padding-bottom: 0.1rem;
+}
+
+.signup-login{
+    display: flex;
+    gap: 0.4rem;
+    align-items: center;
+}
+
+.signup-login-link:hover{
+    color: var(--primary-red);
+    border-bottom: 1px solid var(--primary-red);
+}
+
+/* for small mobile devices like 1phone 5 and 1phone se */
+@media screen and (min-width: 200px) and (max-width: 400px) {
+    .signup-container {
+        padding: 1rem 1.5rem 2.8rem 1.5rem;
+    }
+
+    .signup-image{
+        display: none;
+    }
+
+    .signup-form-container{
+        width: 100%;
+        gap: 1.2rem;
+        margin-top: 1rem;
+    }
+
+    .signup-title{
+        font-size: 1.7rem;
+    }
+
+    .signup-subtitle{
+        font-size: 1.1rem;
+    }
+
+    .signup-input{
+        padding: 1rem;
+        width: 17.5rem;
+        font-size: 1.095rem;
+    }
+
+    .password-container{
+        padding: 0rem;
+        width: 17.5rem;
+        font-size: 1.075rem;
+    }
+
+    .signup-open_eye{
+        left: 85%;
+    }
+
+    .signup-button{
+        width: 17.5rem;
+        border-radius: 8px;
+        font-size: 1.07rem;
+    }
+
+    .signup-login{
+        font-size: 1.1rem;
     }
 }
