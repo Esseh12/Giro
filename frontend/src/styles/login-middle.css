@@ -313,7 +313,7 @@
 }
 
 /* for small mobile devices like 1phone 5 and 1phone se */
-@media screen and (min-width: 200px) and (max-width: 400px) {
+@media screen and (min-width: 200px) and (max-width: 324px) {
     .signup-container {
         padding: 1rem 1.5rem 2.8rem 1.5rem;
     }
@@ -359,6 +359,61 @@
     }
 
     .signup-login{
+        font-size: 1.1rem;
+    }
+}
+
+/* for medium screen for better user experience */
+@media screen and (min-width: 325px) and (max-width: 400px) {
+    .signup-container {
+        padding: 1rem 1.5rem 2.8rem 1.5rem;
+    }
+
+    .signup-image {
+        display: none;
+    }
+
+    .signup-form-container {
+        width: 100%;
+        gap: 1.2rem;
+        margin-top: 1rem;
+    }
+
+    .signup-title {
+        font-size: 1.7rem;
+    }
+
+    .signup-subtitle {
+        font-size: 1.1rem;
+    }
+
+    .signup-input {
+        padding: 1rem;
+        width: 20.5rem;
+        font-size: 1.15rem;
+    }
+
+    .password-container {
+        padding: 0rem;
+        width: 20.5rem;
+        font-size: 1.15rem;
+    }
+
+    .signup-open_eye {
+        left: 87%;
+    }
+
+    .signup-button {
+        width: 20.5rem;
+        border-radius: 8px;
+        font-size: 1.15rem;
+    }
+
+    .signup-google-button{
+        font-size: 1.13rem;
+    }
+
+    .signup-login {
         font-size: 1.1rem;
     }
 }
@@ -421,3 +476,5 @@
         padding: 0.85rem;
     }
 }
+
+/* End of signup responsiveness */
