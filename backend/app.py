@@ -1,4 +1,5 @@
 from flask import Flask, jsonify
+from flask_cors import CORS
 import os
 from views.index import index
 from views.products import products
@@ -10,6 +11,9 @@ initDB()
 
 # initialize flask app
 app = Flask(__name__)
+
+# HANDLE cors
+CORS(app)
 # app.config['FLASK_PORT'] = 5050
 app.url_map.strict_slashes = False
 
