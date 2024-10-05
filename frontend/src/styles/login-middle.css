@@ -280,6 +280,10 @@
     padding: 1rem;
 }
 
+.signup-button--submit:hover{
+    background-color: var(--button-hover-color);
+}
+
 .signup-google-container{
     display: flex;
     align-items: center;
@@ -474,6 +478,69 @@
 
     .signup-google-container{
         padding: 0.85rem;
+    }
+}
+
+/* for small tablet device like ipad mini */
+@media screen and (min-width: 760px) and (max-width: 1100px) {
+    .signup-image{
+        display: none;
+    }
+
+    .signup-container{
+        padding: 2rem 0rem 4rem 0rem;
+        width: 100%;
+        justify-content: center;
+    }
+
+    .signup-form-container{
+        gap: 1.8rem;
+        margin-top: 1.2rem;
+    }
+
+    .signup-form{
+        gap: 1.7rem;
+        margin-top: 0.65rem;
+    }
+
+    .signup-title{
+        font-size: 2.9rem;
+    }
+
+    .signup-subtitle{
+        font-size: 1.2rem;
+    }
+
+    .signup-input{
+        padding: 1rem;
+        width: 38.5rem;
+        font-size: 1.5rem;
+        height: 5.8rem;
+    }
+
+    .password-container{
+        width: 38.5rem;
+        font-size: 1.5rem;
+    }
+
+    .signup-open_eye{
+        font-size: 1.8rem;
+    }
+
+    .signup-button{
+        width: 36.5rem;
+        padding: 1.2rem;
+        border-radius: 5px;
+        font-size: 1.7rem;
+        font-weight: 600;
+    }
+
+    .signup-google-button{
+        font-size: 1.5rem;
+    }
+    
+    .signup-login{
+       font-size: 1.5rem;
     }
 }
 

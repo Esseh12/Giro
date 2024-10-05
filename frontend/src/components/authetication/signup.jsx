@@ -16,7 +16,9 @@ const Signup = () => {
     lastname: "",
     email: "",
     password: "",
+    confirmPassword: "",
   });
+  const [errorMessage, setErrorMessage] = useState("");
 
   // const navigate = useNavigate();
 
@@ -33,6 +35,10 @@ const Signup = () => {
   const handleFormSubmit = async (e) => {
     e.preventDefault(); // prevent the default form submission
 
+    if (formData.password !== formData.confirmPassword) {
+      setErrorMessage("Passwords do not match!");
+      return;
+    }
     // handle form submission
     try {
       const response = await axios.post(
@@ -116,7 +122,7 @@ const Signup = () => {
               <input
                 type={isEyeClosed ? "password" : "text"}
                 name="confirmPassword"
-                // value={formData.confirmPassword}
+                value={formData.confirmPassword}
                 onChange={handleInputChange}
                 placeholder="Confirm Password"
                 className="signup-input signup-input--password"
@@ -131,6 +137,7 @@ const Signup = () => {
                 <VscEye className="signup-open_eye" onClick={handleEyeOpen} />
               )}
             </div>
+            {errorMessage && <p style={{ color: "red" }}>{errorMessage}</p>}
             <button
               type="submit"
               className="signup-button signup-button--submit"
