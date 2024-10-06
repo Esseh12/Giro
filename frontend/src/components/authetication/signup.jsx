@@ -9,7 +9,9 @@ import googleBadge from "../../assets/Icon-Google.svg";
 import { VscEyeClosed, VscEye } from "react-icons/vsc";
 
 const Signup = () => {
+  // for password visibility
   const [isEyeClosed, setIsEyeClose] = useState(true);
+  // data sent to the server
   const [formData, setFormData] = useState({
     firstname: "",
     lastname: "",
@@ -17,8 +19,11 @@ const Signup = () => {
     password: "",
     confirmPassword: "",
   });
+  // error message state
   const [errorMessage, setErrorMessage] = useState("");
+  // success message state
   const [successMessage, setSuccessMessage] = useState("");
+  // for navigation
   const navigate = useNavigate();
 
   // Toggles password visibility
@@ -66,10 +71,11 @@ const Signup = () => {
         //  send a sucess message and redirect user to homepage
         setSuccessMessage("Account created successfully");
 
-        // redirect user to homepage after 2 seconds
+        // redirect user to homepage after 1.5 seconds
         setTimeout(() => {
           navigate("/");
         }, 1500);
+
         // clear form data and error message
         setFormData({
           firstname: "",
@@ -80,10 +86,22 @@ const Signup = () => {
         });
         setErrorMessage("");
       }
+
       // if account creation fails
     } catch (error) {
+      // if error 400 meaning user already exists
+      if (error.response?.status === 400) {
+        setErrorMessage("Email already exists,  please signin");
+
+        // redirect user to login page after 1.5 seconds
+        setTimeout(() => {
+          navigate("/login");
+        }, 1500);
+        return;
+      }
       // Set appropriate error message
       setErrorMessage(
+        // making sure that if the error message isnt avaliable, we display a generic message
         error.response?.data?.message ||
           "Something went wrong, please try again"
       );
@@ -168,7 +186,9 @@ const Signup = () => {
                 <VscEye className="signup-open_eye" onClick={handleEyeOpen} />
               )}
             </div>
+            {/* if error message is true return this */}
             {errorMessage && <p style={{ color: "red" }}>{errorMessage}</p>}
+            {/* if sucess message is true return this */}
             {successMessage && (
               <p style={{ color: "green" }}>{successMessage}</p>
             )}
