@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 import axios from "axios";
 import "../../styles/login-middle.css";
 import AuthNavbar from "./auth_nav";
@@ -17,6 +18,8 @@ const Signup = () => {
     confirmPassword: "",
   });
   const [errorMessage, setErrorMessage] = useState("");
+  const [successMessage, setSuccessMessage] = useState("");
+  const navigate = useNavigate();
 
   // Toggles password visibility
   const handleEyeOpen = () => {
@@ -58,9 +61,16 @@ const Signup = () => {
         }
       );
 
+      // if account is created successfully
       if (response.status === 201) {
-        alert("Account created successfully");
-        // Optionally, redirect user or reset form here
+        //  send a sucess message and redirect user to homepage
+        setSuccessMessage("Account created successfully");
+
+        // redirect user to homepage after 2 seconds
+        setTimeout(() => {
+          navigate("/");
+        }, 1500);
+        // clear form data and error message
         setFormData({
           firstname: "",
           lastname: "",
@@ -70,8 +80,9 @@ const Signup = () => {
         });
         setErrorMessage("");
       }
+      // if account creation fails
     } catch (error) {
-      // Set appropriate error messages
+      // Set appropriate error message
       setErrorMessage(
         error.response?.data?.message ||
           "Something went wrong, please try again"
@@ -158,6 +169,9 @@ const Signup = () => {
               )}
             </div>
             {errorMessage && <p style={{ color: "red" }}>{errorMessage}</p>}
+            {successMessage && (
+              <p style={{ color: "green" }}>{successMessage}</p>
+            )}
             <button
               type="submit"
               className="signup-button signup-button--submit"
