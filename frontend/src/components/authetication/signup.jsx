@@ -1,13 +1,11 @@
 import { useState } from "react";
-// import { useNavigate } from "react-router-dom";
 import axios from "axios";
 import "../../styles/login-middle.css";
 import AuthNavbar from "./auth_nav";
 import Footer from "../footer";
 import loginImg from "../../assets/Side Image.svg";
 import googleBadge from "../../assets/Icon-Google.svg";
-import { VscEyeClosed } from "react-icons/vsc";
-import { VscEye } from "react-icons/vsc";
+import { VscEyeClosed, VscEye } from "react-icons/vsc";
 
 const Signup = () => {
   const [isEyeClosed, setIsEyeClose] = useState(true);
@@ -20,30 +18,39 @@ const Signup = () => {
   });
   const [errorMessage, setErrorMessage] = useState("");
 
-  // const navigate = useNavigate();
-
+  // Toggles password visibility
   const handleEyeOpen = () => {
     setIsEyeClose(!isEyeClosed);
   };
 
+  // Updates form data as user types
   const handleInputChange = (e) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
   };
 
-  // form logic to handle submission
-
+  // Form submission logic
   const handleFormSubmit = async (e) => {
     e.preventDefault(); // prevent the default form submission
 
+    // Check if password and confirm password match
     if (formData.password !== formData.confirmPassword) {
       setErrorMessage("Passwords do not match!");
       return;
     }
+
+    // Prepare the data to send (excluding confirmPassword)
+    const dataToSend = {
+      firstname: formData.firstname,
+      lastname: formData.lastname,
+      email: formData.email,
+      password: formData.password,
+    };
+
     // handle form submission
     try {
       const response = await axios.post(
         "http://localhost:5000/auth/signup",
-        formData,
+        dataToSend,
         {
           headers: {
             "Content-Type": "application/json",
@@ -53,9 +60,22 @@ const Signup = () => {
 
       if (response.status === 201) {
         alert("Account created successfully");
+        // Optionally, redirect user or reset form here
+        setFormData({
+          firstname: "",
+          lastname: "",
+          email: "",
+          password: "",
+          confirmPassword: "",
+        });
+        setErrorMessage("");
       }
     } catch (error) {
-      console.error(`Error:" ${error.response.data} ${error.message}`);
+      // Set appropriate error messages
+      setErrorMessage(
+        error.response?.data?.message ||
+          "Something went wrong, please try again"
+      );
     }
   };
 
@@ -71,7 +91,7 @@ const Signup = () => {
         <div className="signup-form-container">
           <h2 className="signup-title">Create an account</h2>
           <p className="signup-subtitle">Enter your details below</p>
-          <form action="" className="signup-form" onSubmit={handleFormSubmit}>
+          <form className="signup-form" onSubmit={handleFormSubmit}>
             <input
               type="text"
               name="firstname"
