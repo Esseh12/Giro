@@ -20,7 +20,7 @@
 ```
 FLASK_HOST=0.0.0.0
 FLASK_PORT=5000
-FLASK_APP=api/app.py
+FLASK_APP=app.py
 ```
 Depending on your environment, you may need to install the python-dotenv package
 ```pip install python-dotenv``` (ignore this as well, its already installed through the requirements.txt)
