@@ -7,7 +7,7 @@
 
 ##### Before proceding to step 2, Youre advised to run this python app in a virtual enviroment
       ```py
-      python3 -m venv venv
+      python3 -m venv .venv
       source venv/bin/activate
       ```
 
