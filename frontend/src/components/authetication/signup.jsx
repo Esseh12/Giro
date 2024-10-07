@@ -92,7 +92,7 @@ const Signup = () => {
     } catch (error) {
       // if error 400 meaning user already exists
       if (
-        error.response?.status === 400 ||
+        error.response?.status === 400 &&
         error.response.data.error === "Email Exists!"
       ) {
         setErrorMessage("Email already exists,  please signin");
