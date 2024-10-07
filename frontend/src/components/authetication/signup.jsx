@@ -91,7 +91,10 @@ const Signup = () => {
       // if account creation fails
     } catch (error) {
       // if error 400 meaning user already exists
-      if (error.response?.status === 400) {
+      if (
+        error.response?.status === 400 ||
+        error.response?.data?.message === "Email Exists!"
+      ) {
         setErrorMessage("Email already exists,  please signin");
 
         // redirect user to login page after 1.5 seconds
