@@ -66,7 +66,7 @@ const Contact = () => {
               </div>
               <p>Write Us</p>
             </div>
-            <p class="form-text">
+            <p className="form-text">
               Fill out our form and we will contact <br />
               you within 24 hours
             </p>

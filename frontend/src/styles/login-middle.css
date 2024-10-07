@@ -1,194 +1,378 @@
-.login-middle {
+/* sign up jsx styling */
+/*==============  signup styling starts here ===========*/
+.signup-container{
     display: flex;
-    padding: 2rem 0rem 3rem 0rem;
+    height:  auto;
+    padding: 4rem 0rem;
     gap: 10%;
-    max-height: 85vh;
 }
 
-.login-middle__image {
-    max-width: 45vw;
+.signup-container a{
+    text-decoration: none;
 }
 
-.login-middle__content {
-    width: 30vw;
+.signup-image{
+    height: 48rem;
+    width: 50rem;
+}
+
+.signup-form-container{
     display: flex;
     flex-direction: column;
-    justify-content: center;
     gap: 1.5rem;
+    margin-top: 2.2rem;
 }
 
-.login-middle__text {
+.signup-form{
     display: flex;
     flex-direction: column;
+    gap: 1.5rem;
+    margin-top: 1rem;
+    align-items: center;
 }
 
-.login-middle__title {
-    font-size: 3rem;
-    font-weight: 500;
-    margin-bottom: 0.9rem;
+.signup-title{
+    font-size: 2.5rem;
 }
 
-.login-middle__description {
-    font-size: 1.2rem;
-    font-weight: 500;
+.signup-subtitle{
+    color: var(--primary-border-color);
 }
 
-.login-middle__form {
-    display: flex;
-    flex-direction: column;
-    gap: 0.75rem;
+.signup-input{
+    border: 1px solid var(--primary-border-color);
+    border-radius: 10px;
+    padding: 1rem;
+    width: 23.5rem;
+    font-size: 1.075rem;
 }
 
-.login-middle__input {
+.signup-input::placeholder {
+    color: var(--primary-border-color);
+}
+
+.signup-input--password{
     border: none;
-    font-size: 1.2rem;
 }
-.input_password_container {
-    border-bottom: 1px solid var(--primary-border-color);
-    padding: 1rem 0.75rem 0.45rem;
+
+.password-container{
     display: flex;
-    justify-content: space-between;
-    margin-top: 2rem;
+    align-items: center;
+    justify-self: center;
     position: relative;
+    border: 1px solid var(--primary-border-color);
+    border-radius: 10px;
+    padding: 0rem;
+    width: 23.5rem;
+    font-size: 1.075rem;
 }
 
-.email_input {
-    margin-top: 2rem;
-    border-bottom: 1px solid var(--primary-border-color);
-    padding: 1rem 0.75rem 0.45rem;
-}
-
-.opened_eye{
-    font-size: 1.5rem;
+.signup-open_eye{
     position: absolute;
-    bottom: 0;
-    right: 0;
+    left: 90%;
+    font-size: 1.5rem;
+    color: #a5a2a2;
 }
 
-.login-middle__description::placeholder {
-    font-weight: 400;
-    color: #f4f4f4;
+.signup-button{
+    width: 23.5rem;
+    padding: 0.75rem;
+    border-radius: 5px;
+    font-size: 1.05rem;
 }
 
-.login-actions{
-    display: flex;
-    justify-content: center;
-    margin-top: 2rem;
-}
-
-.login-button{
-    width: 50%;
-    padding: 1rem 0rem;
-    text-align: center;
+.signup-button--submit{
+    color: var(--primary-text-lightcolor);
     background-color: var(--primary-red);
-    color: white;
     border: 1px solid var(--primary-red);
-    border-radius: 8px;
-    font-size: 1.04rem;
-    letter-spacing: 2px;
+    padding: 1rem;
 }
 
-.login-button:hover {
+.signup-button--submit:hover{
     background-color: var(--button-hover-color);
 }
 
-.forgot-password-link{
-    color: var(--primary-red);
-    text-align: right;
+.signup-google-container{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid var(--primary-border-color);
+    gap: 0.55rem;
+}
+
+.signup-google-button{
+    border: none;
+    background-color: var(--primary-text-lightcolor);
+    font-size: 1.05rem;
+}
+
+.signup-login-link{
+    color: var(--primary-black);
     text-decoration: none;
-    font-weight: 1.54rem;
+    border-bottom: 1px solid var(--primary-black);
+    padding-bottom: 0.1rem;
 }
 
-@media screen and (min-width: 200px) and (max-width: 400px){
-    .login-middle__image {
+.signup-login{
+    display: flex;
+    gap: 0.4rem;
+    align-items: center;
+}
+
+.signup-login-link:hover{
+    color: var(--primary-red);
+    border-bottom: none;
+}
+
+/* for small mobile devices like 1phone 5 and 1phone se */
+@media screen and (min-width: 200px) and (max-width: 324px) {
+    .signup-container {
+        padding: 1rem 1.5rem 2.8rem 1.5rem;
+    }
+
+    .signup-image{
         display: none;
     }
 
-    .login-middle {
-        display: flex;
+    .signup-form-container{
+        width: 100%;
+        gap: 1.2rem;
+        margin-top: 1rem;
+    }
+
+    .signup-title{
+        font-size: 1.7rem;
+    }
+
+    .signup-subtitle{
+        font-size: 1.1rem;
+    }
+
+    .signup-input{
+        padding: 1rem;
+        width: 17.5rem;
+        font-size: 1.095rem;
+    }
+
+    .password-container{
+        padding: 0rem;
+        width: 17.5rem;
+        font-size: 1.075rem;
+    }
+
+    .signup-open_eye{
+        left: 85%;
+    }
+
+    .signup-button{
+        width: 17.5rem;
+        border-radius: 8px;
+        font-size: 1.07rem;
+    }
+
+    .signup-login{
+        font-size: 1.1rem;
+    }
+}
+
+/* for medium screen for better user experience */
+@media screen and (min-width: 325px) and (max-width: 400px) {
+    .signup-container {
+        padding: 1rem 1.5rem 2.8rem 1.5rem;
+    }
+
+    .signup-image {
+        display: none;
+    }
+
+    .signup-form-container {
+        width: 100%;
+        gap: 1.2rem;
+        margin-top: 1rem;
+    }
+
+    .signup-title {
+        font-size: 1.7rem;
+    }
+
+    .signup-subtitle {
+        font-size: 1.1rem;
+    }
+
+    .signup-input {
+        padding: 1rem;
+        width: 20.5rem;
+        font-size: 1.15rem;
+    }
+
+    .password-container {
+        padding: 0rem;
+        width: 20.5rem;
+        font-size: 1.15rem;
+    }
+
+    .signup-open_eye {
+        left: 87%;
+    }
+
+    .signup-button {
+        width: 20.5rem;
+        border-radius: 8px;
+        font-size: 1.15rem;
+    }
+
+    .signup-google-button{
+        font-size: 1.13rem;
+    }
+
+    .signup-login {
+        font-size: 1.1rem;
+    }
+}
+
+/* for larger mobile devices like 1phone 11promax */
+@media screen and (min-width: 401px) and (max-width: 759px) {
+    .signup-container {
+        padding: 1rem 1.5rem 2.8rem 1.5rem;
+    }
+
+    .signup-image {
+        display: none;
+    }
+
+    .signup-form-container {
+        width: 100%;
+        gap: 1.2rem;
+        margin-top: 1rem;
+    }
+
+    .signup-title {
+        font-size: 1.7rem;
+    }
+
+    .signup-subtitle {
+        font-size: 1.1rem;
+    }
+
+    .signup-input {
+        padding: 1rem;
+        width: 21.5rem;
+        font-size: 1.15rem;
+    }
+
+    .password-container {
+        padding: 0rem;
+        width: 21.5rem;
+        font-size: 1.075rem;
+    }
+
+    .signup-open_eye {
+        left: 85%;
+    }
+
+    .signup-button {
+        width: 21.5rem;
+        border-radius: 8px;
+        font-size: 1.18rem;
+    }
+
+    .signup-login {
+        font-size: 1.15rem;
+    }
+
+    .signup-google-button{
+        font-size: 1.15rem;
+    }
+
+    .signup-google-container{
+        padding: 0.85rem;
+    }
+}
+
+/* for small tablet device like ipad mini */
+@media screen and (min-width: 760px) and (max-width: 1100px) {
+    .signup-image{
+        display: none;
+    }
+
+    .signup-container{
+        padding: 2rem 0rem 4rem 0rem;
+        width: 100%;
         justify-content: center;
-        padding: 2rem 0rem;
-        gap: 0%;
-        max-height: 160vh;
     }
 
-    .login-middle__content {
-        width: 85vw;
-        justify-content: center;
-        gap: 1.5rem;
+    .signup-form-container{
+        gap: 1.8rem;
+        margin-top: 1.2rem;
     }
 
-    .login-middle__title {
-        font-size: 1.5rem;
-        text-align: center;
-        font-weight: 700;
-        margin-bottom: 0.9rem;
+    .signup-form{
+        gap: 1.7rem;
+        margin-top: 0.65rem;
     }
 
-    .login-middle__description {
+    .signup-title{
+        font-size: 2.9rem;
+    }
+
+    .signup-subtitle{
         font-size: 1.2rem;
-        font-weight: 500;
-        text-align: center;
-    }
-}
-
-@media screen and (min-width: 401px) and (max-width: 759px){
-    .login-middle__image {
-        display: none;
     }
 
-    .login-middle {
-        display: flex;
-        justify-content: center;
-        padding: 2rem 0rem;
-        gap: 0%;
-        max-height: 160vh;
+    .signup-input{
+        padding: 1rem;
+        width: 38.5rem;
+        font-size: 1.5rem;
+        height: 5.8rem;
     }
 
-    .login-middle__content {
-        width: 85vw;
-        justify-content: center;
-        gap: 1.5rem;
+    .password-container{
+        width: 38.5rem;
+        font-size: 1.5rem;
     }
-    
-    .login-middle__title {
+
+    .signup-open_eye{
         font-size: 1.8rem;
+    }
+
+    .signup-button{
+        width: 36.5rem;
+        padding: 1.2rem;
+        border-radius: 5px;
+        font-size: 1.7rem;
         font-weight: 600;
     }
 
-    .login-button{
-        max-width: 42%;
+    .signup-google-button{
+        font-size: 1.5rem;
+    }
+    
+    .signup-login{
+       font-size: 1.5rem;
     }
 }
 
-@media screen and (min-width: 760px) and (max-width: 1100px){
-    .login-middle__image {
-        display: block;
-        max-width: 38vw;
-    }
+/* End of signup responsiveness */
 
-     .login-middle__content {
-        width: 50vw;
-        justify-content: center;
-        gap: 1.5rem;
-    }
+/*==============  login styling starts here ===========*/
+.signin-image{
+    height: 38rem;
+}
 
-     .login-middle {
-        display: flex;
-        justify-content: space-between;
-        padding: 2rem 3rem 2rem 0rem;
-        gap: 3%;
-        max-height: 160vh;
-    }
+.signin-form-container{
+    display: flex;
+    justify-content: center;
+}
 
-     .login-middle__title {
-        font-size: 1.8rem;
-        margin-top: 1.3rem;
-        text-align: center;
-    }
+.forgot-password-link{
+    color: var(--primary-black);
+    margin-left: auto;
+}
 
-    .login-middle__description {
-        font-size: 1.1rem;
-        text-align: center;
-    }
+.forgot-password-link:hover{
+    color: var(--primary-red);
+}
+
+.signin-login-link{
+    margin-left: 0.555rem;
 }
