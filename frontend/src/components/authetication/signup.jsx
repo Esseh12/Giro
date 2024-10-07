@@ -2,6 +2,7 @@ import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
 import "../../styles/login-middle.css";
+import Top from "../top";
 import AuthNavbar from "./auth_nav";
 import Footer from "../footer";
 import loginImg from "../../assets/Side Image.svg";
@@ -110,6 +111,7 @@ const Signup = () => {
 
   return (
     <>
+      <Top />
       <AuthNavbar />
       <div className="signup-container">
         <img
