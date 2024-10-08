@@ -74,7 +74,7 @@ const Signup = () => {
 
         // redirect user to homepage after 1.5 seconds
         setTimeout(() => {
-          navigate("/");
+          navigate("/login");
         }, 1500);
 
         // clear form data and error message
