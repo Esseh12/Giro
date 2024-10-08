@@ -5,8 +5,11 @@ import About from "./components/mainPages/about";
 import Error404 from "./components/mainPages/error404";
 import Contact from "./components/mainPages/contact";
 import Signin from "./components/authetication/signin";
+import Profile from "./components/mainPages/profile";
+import axios from "axios";
 
 function App() {
+  axios.defaults.withCredentials = true;
   return (
     <BrowserRouter>
       <Routes>
@@ -15,6 +18,7 @@ function App() {
         <Route path="/login" element={<Signin />} />
         <Route path="/about" element={<About />} />
         <Route path="/contact" element={<Contact />} />
+        <Route path="/profile" element={<Profile />} />
         <Route path="*" element={<Error404 />} />
       </Routes>
     </BrowserRouter>

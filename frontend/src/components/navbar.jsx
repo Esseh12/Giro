@@ -73,23 +73,23 @@ const Navbar = () => {
               {isDropdownOpen && (
                 <div className="dropdown-content glass-bg">
                   <div className="dropdown-content-subcontainer">
-                    <FaRegUser classname="dropdown-icon" />
-                    <a href="#more">Manage My Account</a>
+                    <FaRegUser className="dropdown-icon" />
+                    <a href="/profile">Manage My Account</a>
                   </div>
                   <div className="dropdown-content-subcontainer">
-                    <LuShoppingBag classname="dropdown-icon" />
+                    <LuShoppingBag className="dropdown-icon" />
                     <a href="#more">My Order</a>
                   </div>
                   <div className="dropdown-content-subcontainer">
-                    <FaRegTimesCircle classname="dropdown-icon" />
+                    <FaRegTimesCircle className="dropdown-icon" />
                     <a href="#more">My Cancellations</a>
                   </div>
                   <div className="dropdown-content-subcontainer">
-                    <CiStar classname="dropdown-icon" />
+                    <CiStar className="dropdown-icon" />
                     <a href="#more">My Reviews</a>
                   </div>
                   <div className="dropdown-content-subcontainer">
-                    <TbLogout2 classname="dropdown-icon" />
+                    <TbLogout2 className="dropdown-icon" />
                     <a href="#more">Logout</a>
                   </div>
                 </div>
