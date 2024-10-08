@@ -80,7 +80,7 @@ const Signin = () => {
 
         setTimeout(() => {
           navigate("/create-account");
-        }, 1500);
+        }, 2500);
       }
     }
   };
