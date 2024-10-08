@@ -1,5 +1,5 @@
 """
-This module contains route for the users activities like login, signup etc 
+This module contains route for the users activities like login, signup etc
 """
 from flask import Blueprint, jsonify, request, abort, make_response
 from models.db import getDB
@@ -20,11 +20,11 @@ def signup():
   email = data.get('email')
   phone = data.get('phone_number')
   passwd = data.get('password')
-  
+
   for i in [fname, lname, email, passwd]:
     if i == None:
       abort(400, 'Required: firstname, lastname, email, password')
-  
+
   passwd = generate_password_hash(passwd)
 
   db = getDB()
@@ -38,7 +38,7 @@ def signup():
     cur.close()
     db.close()
     abort(400, "Email Exists!")
-  
+
   cur.execute("SELECT id, address, email, firstname, lastname, phone_number FROM users WHERE id = ?", (id, ))
   user = dict(cur.fetchone())
   cur.close()
@@ -58,7 +58,7 @@ def login():
 
   if not email or not passwd:
       abort(403, "Required: email and password required")
-  
+
   db = getDB()
   cur = db.cursor()
 
@@ -68,14 +68,14 @@ def login():
     cur.close()
     db.close()
     abort(403, "No User with that email")
-  
+
   user = dict(user)
   user_pass = user.get("password")
   if not check_password_hash(user_pass, passwd):
     cur.close()
     db.close()
     abort(403, "Password Incorrect!")
-  
+
   cur.close()
   db.close()
   new_obj = {x: user[x] for x in user.keys() if x != "password"}
@@ -91,7 +91,7 @@ def profile():
   user_id = request.cookies.get('token')
   if not user_id:
     abort(401, "Not Authorized: You are not logged in!")
-  
+
   db = getDB()
   cur = db.cursor()
   cur.execute('SELECT address, email, firstname, lastname, id, phone_number FROM users WHERE id = ?', (user_id, ))
@@ -109,3 +109,49 @@ def logout():
   )
   res.set_cookie('token', '', expires=0)
   return res
+
+
+@users.put('/profile')
+def update_profile():
+  if request.content_type != 'application/json':
+    abort(415, "Unsupported Media Type: Please supply a json body")
+
+  if request.method == 'PUT':
+    data = request.json
+
+    first_name = data.get('firstname')
+    last_name = data.get('lastname')
+    email = data.get('email')
+    phone = data.get('phone_number')
+    passwd = data.get('password')
+
+  if not (first_name and last_name and email and phone and passwd):
+    abort(400, 'Required: firstname, lastname, email, phone_number, password')
+
+  db = getDB()
+  cur = db.cursor()
+
+  user_id = request.cookies.get('token')
+  if not user_id:
+    abort(401, "Not Authorized: You are not logged in!")
+
+  cur.execute("SELECT id, password FROM users WHERE id = ?", (user_id, ))
+  user = cur.fetchone()
+  user = dict(user)
+
+  if not user:
+    cur.close()
+    db.close()
+    abort(404, "User not found!")
+
+  if not check_password_hash(user.get('password'), passwd):
+    cur.close()
+    db.close()
+    abort(403, "Password Incorrect!")
+
+  cur.execute("UPDATE users SET firstname = ?, lastname = ?, email = ?, phone_number = ? WHERE id = ?", (first_name, last_name, email, phone, user_id, ))
+  db.commit()
+  cur.close()
+  db.close()
+
+  return jsonify({'msg': 'Profile updated successfully', 'status': 200})
