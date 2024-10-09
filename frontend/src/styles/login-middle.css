@@ -1,8 +1,3 @@
-/* signin jsx styling */
-/*==============  signin styling starts here ===========*/
-
-
-
 /* sign up jsx styling */
 /*==============  signup styling starts here ===========*/
 .signup-container{
@@ -10,6 +5,10 @@
     height:  auto;
     padding: 4rem 0rem;
     gap: 10%;
+}
+
+.signup-container a{
+    text-decoration: none;
 }
 
 .signup-image{
@@ -354,3 +353,26 @@
 }
 
 /* End of signup responsiveness */
+
+/*==============  login styling starts here ===========*/
+.signin-image{
+    height: 38rem;
+}
+
+.signin-form-container{
+    display: flex;
+    justify-content: center;
+}
+
+.forgot-password-link{
+    color: var(--primary-black);
+    margin-left: auto;
+}
+
+.forgot-password-link:hover{
+    color: var(--primary-red);
+}
+
+.signin-login-link{
+    margin-left: 0.555rem;
+}

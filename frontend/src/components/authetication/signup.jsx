@@ -92,8 +92,8 @@ const Signup = () => {
     } catch (error) {
       // if error 400 meaning user already exists
       if (
-        error.response?.status === 400 ||
-        error.response?.data?.message === "Email Exists!"
+        error.response?.status === 400 &&
+        error.response.data.error === "Email Exists!"
       ) {
         setErrorMessage("Email already exists,  please signin");
 
@@ -106,8 +106,7 @@ const Signup = () => {
       // Set appropriate error message
       setErrorMessage(
         // making sure that if the error message isnt avaliable, we display a generic message
-        error.response?.data?.message ||
-          "Something went wrong, please try again"
+        error.response.data.error || "Something went wrong, please try again"
       );
     }
   };
