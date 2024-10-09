@@ -13,7 +13,7 @@ initDB()
 app = Flask(__name__)
 
 # HANDLE cors
-CORS(app)
+CORS(app, supports_credentials=True)
 # app.config['FLASK_PORT'] = 5050
 app.url_map.strict_slashes = False
 
