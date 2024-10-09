@@ -4,7 +4,8 @@ All DB stuffs abstracted away here
 import sqlite3
 import os
 
-DATABASE_NAME = 'giro.db'
+# DATABASE_NAME = 'giro.db'
+DATABASE_NAME = os.getenv("DATABASE_NAME")
 
 
 def getDB():
