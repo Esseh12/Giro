@@ -13,8 +13,10 @@ def checkout():
   from app import mail
 
   msg = 'Congratulations! Here is your receipt'
+
+  client_email = 'michael_k70@ymail.com'
   try:
-    mail.sendMail('Giro Purchase Receipts', 'michael_k70@ymail.com', msg)
+    mail.sendMail('Giro Purchase Receipts', client_email, msg)
     return jsonify({'status': 201, 'msg': 'sales created'}), 201
   except Exception as e:
     print(e)

@@ -58,4 +58,9 @@ Depending on your environment, you may need to install the python-dotenv package
 
 6.  GET /logout
       Return: success
+
+7.  POST /contact
+      Return: success
+
+8.  
 ```

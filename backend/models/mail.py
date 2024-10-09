@@ -4,7 +4,6 @@ import os
 import sys
 
 
-
 class Email:
   MAIL_SERVER = os.environ.get('MAIL_SERVER')
   MAIL_PORT = os.getenv('MAIL_PORT')

@@ -11,7 +11,10 @@ from models.mail import Email
 # Initialize database
 initDB()
 
-mail = Email()
+ENABLE_EMAIL_SERVICE = os.getenv('ENABLE_EMAIL_SERVICE', 'False')
+
+if ENABLE_EMAIL_SERVICE == 'True':  # so that app can run successfully without email errors
+  mail = Email()
 
 # initialize flask app
 app = Flask(__name__)
@@ -25,7 +28,10 @@ app.url_map.strict_slashes = False
 app.register_blueprint(index, url_prefix='/')
 app.register_blueprint(products, url_prefix='/products')
 app.register_blueprint(users, url_prefix='/auth')
-app.register_blueprint(sales)
+
+# This is necessary for email compatibility. 
+if ENABLE_EMAIL_SERVICE == 'True':
+  app.register_blueprint(sales)
 
 
 @app.errorhandler(400)
