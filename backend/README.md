@@ -60,6 +60,8 @@ Depending on your environment, you may need to install the python-dotenv package
       Return: success
 
 7.  POST /contact
+      Body
+          JSON: name, email, phone_number, message
       Return: success
 
 8.  

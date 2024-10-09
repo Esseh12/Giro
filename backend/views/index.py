@@ -50,7 +50,7 @@ def contact_us():
 
   name = data.get('name')
   email = data.get('email')
-  phone = data.get('phonenumber')
+  phone = data.get('phone_number')
   message = data.get('message')
 
   body = f'Name: {name}\nEmail: {email}\nPhone: {phone}\nMessage: {message}\n'''
