@@ -68,7 +68,7 @@ Depending on your environment, you may need to install the python-dotenv package
       Body
           JSON: firstname, lastname, email, password, phone_number
       Constraints: 
-        - only phone_number is optional
+        - must be logged in, and pass in any data that needs to be changed.
       Return:
         - A Json of the updated data.
 ```
