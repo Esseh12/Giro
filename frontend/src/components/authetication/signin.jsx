@@ -1,6 +1,6 @@
 import { useState } from "react";
 import axios from "axios";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, Link } from "react-router-dom";
 import Top from "../top";
 import AuthNavbar from "./auth_nav";
 import Footer from "../footer";
@@ -147,12 +147,12 @@ const Signin = () => {
             </button>
             <p>
               New User?
-              <a
-                href="/create-account"
+              <Link
+                to="/create-account"
                 className="signup-login-link signin-login-link"
               >
                 Create account
-              </a>
+              </Link>
             </p>
           </form>
         </div>

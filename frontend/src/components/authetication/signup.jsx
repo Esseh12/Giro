@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, Link } from "react-router-dom";
 import axios from "axios";
 import "../../styles/login-middle.css";
 import Top from "../top";
@@ -212,9 +212,9 @@ const Signup = () => {
             </div>
             <p className="signup-login">
               Already have an account?
-              <a href="/login" className="signup-login-link">
+              <Link to="/login" className="signup-login-link">
                 Login
-              </a>
+              </Link>
             </p>
           </form>
         </div>
