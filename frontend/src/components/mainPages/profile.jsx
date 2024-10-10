@@ -4,8 +4,10 @@ import Navbar from "../navbar";
 import Footer from "../footer";
 import "../../styles/profile.css";
 import axios from "axios";
+import { VscEyeClosed, VscEye } from "react-icons/vsc";
 
 const Profile = () => {
+  const [eyeClosed, setEyeClosed] = useState(true);
   const [userData, setUserData] = useState({
     firstname: "",
     lastname: "",
@@ -14,9 +16,19 @@ const Profile = () => {
     phone_number: "",
   });
 
+  // for password toggle
+  const handleEyeToggle = () => {
+    setEyeClosed(!eyeClosed);
+  };
+
   const fetchUserData = async () => {
     try {
-      const response = await axios.get("http://localhost:5000/auth/profile");
+      const response = await axios.get(
+        "https://giro-fz5q.onrender.com/auth/profile",
+        {
+          withCredentials: true,
+        }
+      );
       setUserData(response.data.data);
     } catch (error) {
       console.log(`Ese look at this ${error}`);
@@ -67,21 +79,13 @@ const Profile = () => {
                   <label htmlFor="firstname" className="form-label">
                     First Name
                   </label>
-                  <input
-                    type="text"
-                    className="form-input"
-                    value={userData.firstname}
-                  />
+                  <input type="text" className="form-input" />
                 </div>
                 <div className="form-sub-group">
                   <label htmlFor="lastname" className="form-label">
                     Last Name
                   </label>
-                  <input
-                    type="text"
-                    className="form-input"
-                    value={userData.lastname}
-                  />
+                  <input type="text" className="form-input" />
                 </div>
               </div>
               <div className="form-group">
@@ -92,33 +96,90 @@ const Profile = () => {
                   <input
                     type="email"
                     className="form-input"
-                    value={userData.email}
+                    // value={userData.email}
                   />
                 </div>
                 <div className="form-sub-group">
                   <label htmlFor="address" className="form-label">
                     Address
                   </label>
-                  <input
-                    type="text"
-                    className="form-input"
-                    value={userData.address}
-                  />
+                  <input type="text" className="form-input" />
                 </div>
               </div>
               <div className="form-group">
-                <label htmlFor="phone_number" className="form-label">
-                  Phone Number
-                </label>
-                <input
-                  type="tel"
-                  className="form-input"
-                  value={userData.phone_number}
-                />
+                <div className="form-sub-group">
+                  <label htmlFor="current password" className="form-label">
+                    password changes
+                  </label>
+                  <div className="form-password-container">
+                    <input
+                      type={eyeClosed ? "password" : "text"}
+                      className="form-input"
+                    />
+                    {eyeClosed ? (
+                      <VscEyeClosed
+                        className="profile-eye-icon"
+                        onClick={handleEyeToggle}
+                      />
+                    ) : (
+                      <VscEye
+                        className="profile-eye-icon"
+                        onClick={handleEyeToggle}
+                      />
+                    )}
+                  </div>
+                  <div className="form-password-container">
+                    <input
+                      type={eyeClosed ? "password" : "text"}
+                      className="form-input"
+                    />
+                    {eyeClosed ? (
+                      <VscEyeClosed
+                        className="profile-eye-icon"
+                        onClick={handleEyeToggle}
+                      />
+                    ) : (
+                      <VscEye
+                        className="profile-eye-icon"
+                        onClick={handleEyeToggle}
+                      />
+                    )}
+                  </div>
+                  <div className="form-password-container">
+                    <input
+                      type={eyeClosed ? "password" : "text"}
+                      className="form-input"
+                    />
+                    {eyeClosed ? (
+                      <VscEyeClosed
+                        className="profile-eye-icon"
+                        onClick={handleEyeToggle}
+                      />
+                    ) : (
+                      <VscEye
+                        className="profile-eye-icon"
+                        onClick={handleEyeToggle}
+                      />
+                    )}
+                  </div>
+                </div>
+                <div className="form-sub-group">
+                  <label htmlFor="phone number" className="form-label">
+                    Phone Number
+                  </label>
+                  <input type="text" className="form-input" />
+                </div>
               </div>
             </div>
             <div className="form-footer">
-              <button type="submit" className="form-button">
+              <a
+                href="#reset"
+                type="submit"
+                className="form-button reset-button"
+              >
+                Reset Changes
+              </a>
+              <button type="submit" className="form-button submit-button">
                 Save Changes
               </button>
             </div>

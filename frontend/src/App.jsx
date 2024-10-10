@@ -10,6 +10,7 @@ import axios from "axios";
 
 function App() {
   axios.defaults.withCredentials = true;
+
   return (
     <BrowserRouter>
       <Routes>

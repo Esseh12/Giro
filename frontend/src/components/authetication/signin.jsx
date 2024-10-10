@@ -29,7 +29,7 @@ const Signin = () => {
     // Send the form data to the server
     try {
       const response = await axios.post(
-        "http://localhost:5000/auth/login",
+        "https://giro-fz5q.onrender.com/auth/login",
         loginData,
         {
           headers: {
