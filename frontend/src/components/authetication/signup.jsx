@@ -58,7 +58,7 @@ const Signup = () => {
     // handle form submission
     try {
       const response = await axios.post(
-        "http://localhost:5000/auth/signup",
+        "https://giro-fz5q.onrender.com/auth/signup",
         dataToSend,
         {
           headers: {
@@ -104,10 +104,12 @@ const Signup = () => {
         return;
       }
       // Set appropriate error message
-      setErrorMessage(
-        // making sure that if the error message isnt avaliable, we display a generic message
-        error.response.data.error || "Something went wrong, please try again"
-      );
+      else {
+        setErrorMessage(
+          // making sure that if the error message isnt avaliable, we display a generic message
+          error.response.data.error || "Something went wrong, please try again"
+        );
+      }
     }
   };
 
