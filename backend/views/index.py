@@ -1,8 +1,9 @@
 """
 This module contains route for the index 
 """
-from flask import Blueprint, jsonify
+from flask import Blueprint, jsonify, request, abort
 from models.db import getDB
+import os
 
 index = Blueprint('index', __name__)
 
@@ -37,3 +38,28 @@ def index_route():
       "all_products": all_products
   }
   return jsonify({"status": 200, "data": data}), 200
+
+
+@index.post('/contact')
+def contact_us():
+  if request.content_type != 'application/json':
+    abort(415, "Unsupported Media Type: Please supply a json body")
+  data = request.json
+
+  from app import mail
+
+  name = data.get('name')
+  email = data.get('email')
+  phone = data.get('phone_number')
+  message = data.get('message')
+
+  body = f'Name: {name}\nEmail: {email}\nPhone: {phone}\nMessage: {message}\n'''
+
+  CONTACT_US_EMAIL = os.getenv('CONTACT_US_EMAIL')
+
+  try:
+    mail.sendMail('Giro Contact Us Form', CONTACT_US_EMAIL, body)
+    return jsonify({'status': 200, 'msg': 'Message sent successfully!'}), 200
+  except Exception as e:
+    print(e)
+    return jsonify({'status': 401, 'msg': 'Contact us failed'}), 401
