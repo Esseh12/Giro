@@ -63,40 +63,48 @@ const Profile = () => {
             </div>
             <div className="form-body">
               <div className="form-group">
-                <label htmlFor="firstname" className="form-label">
-                  First Name
-                </label>
-                <input
-                  type="text"
-                  className="form-input"
-                  value={userData.firstname}
-                />
-                <label htmlFor="lastname" className="form-label">
-                  Last Name
-                </label>
-                <input
-                  type="text"
-                  className="form-input"
-                  value={userData.lastname}
-                />
+                <div className="form-sub-group">
+                  <label htmlFor="firstname" className="form-label">
+                    First Name
+                  </label>
+                  <input
+                    type="text"
+                    className="form-input"
+                    value={userData.firstname}
+                  />
+                </div>
+                <div className="form-sub-group">
+                  <label htmlFor="lastname" className="form-label">
+                    Last Name
+                  </label>
+                  <input
+                    type="text"
+                    className="form-input"
+                    value={userData.lastname}
+                  />
+                </div>
               </div>
               <div className="form-group">
-                <label htmlFor="email" className="form-label">
-                  Email
-                </label>
-                <input
-                  type="email"
-                  className="form-input"
-                  value={userData.email}
-                />
-                <label htmlFor="address" className="form-label">
-                  Address
-                </label>
-                <input
-                  type="text"
-                  className="form-input"
-                  value={userData.address}
-                />
+                <div className="form-sub-group">
+                  <label htmlFor="email" className="form-label">
+                    Email
+                  </label>
+                  <input
+                    type="email"
+                    className="form-input"
+                    value={userData.email}
+                  />
+                </div>
+                <div className="form-sub-group">
+                  <label htmlFor="address" className="form-label">
+                    Address
+                  </label>
+                  <input
+                    type="text"
+                    className="form-input"
+                    value={userData.address}
+                  />
+                </div>
               </div>
               <div className="form-group">
                 <label htmlFor="phone_number" className="form-label">
