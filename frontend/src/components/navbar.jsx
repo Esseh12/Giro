@@ -1,6 +1,6 @@
 import { useState } from "react";
 import logo from "../assets/giro_logo.png";
-import { NavLink } from "react-router-dom";
+import { NavLink, Link } from "react-router-dom";
 import "../styles/navbar.css";
 import { IoMdSearch } from "react-icons/io";
 import { FaRegHeart } from "react-icons/fa";
@@ -74,23 +74,23 @@ const Navbar = () => {
                 <div className="dropdown-content glass-bg">
                   <div className="dropdown-content-subcontainer">
                     <FaRegUser className="dropdown-icon" />
-                    <a href="/profile">Manage My Account</a>
+                    <Link to="/profile">Manage My Account</Link>
                   </div>
                   <div className="dropdown-content-subcontainer">
                     <LuShoppingBag className="dropdown-icon" />
-                    <a href="#more">My Order</a>
+                    <Link to="#more">My Order</Link>
                   </div>
                   <div className="dropdown-content-subcontainer">
                     <FaRegTimesCircle className="dropdown-icon" />
-                    <a href="#more">My Cancellations</a>
+                    <Link to="#more">My Cancellations</Link>
                   </div>
                   <div className="dropdown-content-subcontainer">
                     <CiStar className="dropdown-icon" />
-                    <a href="#more">My Reviews</a>
+                    <Link to="#more">My Reviews</Link>
                   </div>
                   <div className="dropdown-content-subcontainer">
                     <TbLogout2 className="dropdown-icon" />
-                    <a href="#more">Logout</a>
+                    <Link to="#more">Logout</Link>
                   </div>
                 </div>
               )}

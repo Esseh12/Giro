@@ -130,9 +130,9 @@ const Signin = () => {
                 <VscEye className="signup-open_eye" onClick={handleEyeOpen} />
               )}
             </div>
-            <a href="#forgot-password" className="forgot-password-link">
+            <Link to="#forgot-password" className="forgot-password-link">
               Forgot Password?
-            </a>
+            </Link>
             {/* if error message is true return this */}
             {errorMessage && <p style={{ color: "red" }}>{errorMessage}</p>}
             {/* if sucess message is true return this */}

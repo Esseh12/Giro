@@ -1,4 +1,5 @@
 import "../../styles/homepage.css";
+import { Link } from "react-router-dom";
 import Top from "../top";
 import Navbar from "../navbar";
 import Stats from "../stats";
@@ -21,33 +22,33 @@ const Homepage = () => {
         {/* top of homepage */}
         <section className="promo-section">
           <div className="category-links">
-            <a href="/women" className="category-link first-category-link">
+            <Link to="/women" className="category-link first-category-link">
               Women's Fashion
-            </a>
-            <a href="/men" className="category-link">
+            </Link>
+            <Link to="/men" className="category-link">
               Men's Fashion
-            </a>
-            <a href="/electronics" className="category-link">
+            </Link>
+            <Link to="/electronics" className="category-link">
               Electronics
-            </a>
-            <a href="/lifestyle" className="category-link">
+            </Link>
+            <Link to="/lifestyle" className="category-link">
               Home & Lifestyle
-            </a>
-            <a href="/medicine" className="category-link">
+            </Link>
+            <Link to="/medicine" className="category-link">
               Medicine
-            </a>
-            <a href="/sports" className="category-link">
+            </Link>
+            <Link to="/sports" className="category-link">
               Sports & Outdoor
-            </a>
-            <a href="/baby" className="category-link">
+            </Link>
+            <Link to="/baby" className="category-link">
               Baby's & Toys
-            </a>
-            <a href="/groceries" className="category-link">
+            </Link>
+            <Link to="/groceries" className="category-link">
               Groceries & Pets
-            </a>
-            <a href="/health" className="category-link">
+            </Link>
+            <Link to="/health" className="category-link">
               Health & Beauty
-            </a>
+            </Link>
           </div>
 
           <div className="promo-content">
@@ -65,9 +66,9 @@ const Homepage = () => {
                 off Voucher
               </h3>
               <div className="promo-shop-button">
-                <a href="#shop" className="shop-now-link">
+                <Link to="#shop" className="shop-now-link">
                   Shop Now
-                </a>
+                </Link>
                 <IoMdArrowForward />
               </div>
             </div>
@@ -125,9 +126,9 @@ const Homepage = () => {
                 <p className="new-arrivals-description">
                   Black and white version of the PS5 coming out on sale.
                 </p>
-                <a href="#more" className="shop-now-link">
+                <Link to="#more" className="shop-now-link">
                   Shop Now
-                </a>
+                </Link>
               </div>
             </div>
 
@@ -142,9 +143,9 @@ const Homepage = () => {
                 <p className="new-arrivals-description">
                   Featured woman collections that give you another vibe.
                 </p>
-                <a href="#more" className="shop-now-link">
+                <Link to="#more" className="shop-now-link">
                   Shop Now
-                </a>
+                </Link>
               </div>
             </div>
 
@@ -159,9 +160,9 @@ const Homepage = () => {
                 <p className="new-arrivals-description">
                   Amazon wireless speakers
                 </p>
-                <a href="#more" className="shop-now-link">
+                <Link to="#more" className="shop-now-link">
                   Shop Now
-                </a>
+                </Link>
               </div>
             </div>
 
@@ -176,9 +177,9 @@ const Homepage = () => {
                 <p className="new-arrivals-description">
                   Gucci intense oud Edp
                 </p>
-                <a href="#more" className="shop-now-link">
+                <Link to="#more" className="shop-now-link">
                   Shop Now
-                </a>
+                </Link>
               </div>
             </div>
           </div>

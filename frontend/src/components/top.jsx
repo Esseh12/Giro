@@ -1,4 +1,5 @@
 import "../styles/top.css";
+import { Link } from "react-router-dom";
 
 function Top() {
   return (
@@ -7,7 +8,7 @@ function Top() {
         Summer Sale For Swim Suits And Free Express Delivery
         <span> - OFF 50%!</span>
       </p>
-      <a href="/more">ShopNow</a>
+      <Link to="/more">ShopNow</Link>
     </div>
   );
 }

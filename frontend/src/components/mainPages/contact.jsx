@@ -3,6 +3,7 @@ import Footer from "../footer";
 import Top from "../top";
 import { useRef } from "react";
 import emailjs from "emailjs-com";
+import { Link } from "react-router-dom";
 import "../../styles/contact.css";
 import { FaPhoneAlt } from "react-icons/fa";
 import { IoIosMail } from "react-icons/io";
@@ -70,12 +71,12 @@ const Contact = () => {
               Fill out our form and we will contact <br />
               you within 24 hours
             </p>
-            <a href="malito:customer@giro.com" className="contact-link">
+            <Link to="malito:customer@giro.com" className="contact-link">
               <span>Email:</span> customer@giro.com
-            </a>
-            <a href="malito:support@giro.com" className="contact-link">
+            </Link>
+            <Link to="malito:support@giro.com" className="contact-link">
               <span>Email:</span> support@giro.com
-            </a>
+            </Link>
           </div>
         </div>
 

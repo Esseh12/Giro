@@ -4,6 +4,7 @@ import Navbar from "../navbar";
 import Footer from "../footer";
 import "../../styles/profile.css";
 import axios from "axios";
+import { Link } from "react-router-dom";
 import { VscEyeClosed, VscEye } from "react-icons/vsc";
 
 const Profile = () => {
@@ -46,7 +47,7 @@ const Profile = () => {
       <div className="profile-container">
         <div className="breadcrumb">
           <span className="breadcrumb-span">
-            <a href="/">Home</a> / <a href="/profile">My Account</a>
+            <Link to="/">Home</Link> / <Link to="/profile">My Account</Link>
           </span>
           <p className="welcome-message">
             Welcome! <span>{userData.firstname}</span>
@@ -56,14 +57,14 @@ const Profile = () => {
           <div className="profile-options">
             <div className="account-section">
               <h3>Manage My Account</h3>
-              <a href="/profile">My Profile</a>
-              <a href="#more">Address Book</a>
-              <a href="#more">My Payment Options</a>
+              <Link to="/profile">My Profile</Link>
+              <Link to="#more">Address Book</Link>
+              <Link to="#more">My Payment Options</Link>
             </div>
             <div className="orders-section">
               <h3>My Orders</h3>
-              <a href="#more">My Returns</a>
-              <a href="#more">My Cancellations</a>
+              <Link to="#more">My Returns</Link>
+              <Link to="#more">My Cancellations</Link>
             </div>
             <div className="wishlist-section">
               <h3>My WishList</h3>
@@ -172,11 +173,7 @@ const Profile = () => {
               </div>
             </div>
             <div className="form-footer">
-              <a
-                href="#reset"
-                type="submit"
-                className="form-button reset-button"
-              >
+              <a to="#reset" type="submit" className="form-button reset-button">
                 Reset Changes
               </a>
               <button type="submit" className="form-button submit-button">

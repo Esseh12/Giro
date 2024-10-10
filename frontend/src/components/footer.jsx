@@ -1,4 +1,5 @@
 import "../styles/footer.css";
+import { Link } from "react-router-dom";
 import { BiSolidPaperPlane } from "react-icons/bi";
 import { RiFacebookLine } from "react-icons/ri";
 import { FiTwitter } from "react-icons/fi";
@@ -45,29 +46,29 @@ const Footer = () => {
           <div className="footer__section footer__section--account">
             <h1 className="footer__title">Account</h1>
             <p>
-              <a href="#more" className="footer__link">
+              <Link to="#more" className="footer__link">
                 My Account
-              </a>
+              </Link>
             </p>
             <p>
-              <a href="#more" className="footer__link">
+              <Link to="#more" className="footer__link">
                 Login / Register
-              </a>
+              </Link>
             </p>
             <p>
-              <a href="#more" className="footer__link">
+              <Link to="#more" className="footer__link">
                 Cart
-              </a>
+              </Link>
             </p>
             <p>
-              <a href="#more" className="footer__link">
+              <Link to="#more" className="footer__link">
                 Wishlist
-              </a>
+              </Link>
             </p>
             <p>
-              <a href="#more" className="footer__link">
+              <Link to="#more" className="footer__link">
                 Shop
-              </a>
+              </Link>
             </p>
           </div>
 
@@ -97,20 +98,20 @@ const Footer = () => {
               />
             </div>
             <div className="footer_badge_container">
-              <a href="more">
+              <Link to="more">
                 <img
                   src={google_store_badge}
                   alt="Google Play Store"
                   className="footer__badge google_badge"
                 ></img>
-              </a>
-              <a href="more">
+              </Link>
+              <Link to="more">
                 <img
                   src={app_store_badge}
                   alt="Apple Store"
                   className="footer__badge apple_badge"
                 />
-              </a>
+              </Link>
             </div>
           </div>
           <div className="footer__social-icons">
