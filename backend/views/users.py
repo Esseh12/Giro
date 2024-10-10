@@ -116,42 +116,57 @@ def update_profile():
   if request.content_type != 'application/json':
     abort(415, "Unsupported Media Type: Please supply a json body")
 
-  if request.method == 'PUT':
-    data = request.json
+  data = request.json
 
-    first_name = data.get('firstname')
-    last_name = data.get('lastname')
-    email = data.get('email')
-    phone = data.get('phone_number')
-    passwd = data.get('password')
+  if not data:
+    abort(400, "No data provided")
 
-  if not (first_name and last_name and email and phone and passwd):
-    abort(400, 'Required: firstname, lastname, email, phone_number, password')
 
   db = getDB()
+  db.execute("PRAGMA journal_mode=WAL;")
   cur = db.cursor()
 
   user_id = request.cookies.get('token')
   if not user_id:
     abort(401, "Not Authorized: You are not logged in!")
 
-  cur.execute("SELECT id, password FROM users WHERE id = ?", (user_id, ))
+  cur.execute("SELECT id FROM users WHERE id = ?", (user_id,))
   user = cur.fetchone()
-  user = dict(user)
 
   if not user:
     cur.close()
     db.close()
     abort(404, "User not found!")
 
-  if not check_password_hash(user.get('password'), passwd):
+  received = {k: v for k, v in data.items()}
+
+  if not received:
     cur.close()
     db.close()
-    abort(403, "Password Incorrect!")
+    abort(400, "No data to update")
+  
+  update_cols = ', '.join([f'{k} = ?' for k in received.keys()])
+  update_vals = list(received.values())
 
-  cur.execute("UPDATE users SET firstname = ?, lastname = ?, email = ?, phone_number = ? WHERE id = ?", (first_name, last_name, email, phone, user_id, ))
+  cur.execute(f"UPDATE users SET {update_cols} WHERE id = ?", update_vals + [user_id])
+
+  cur.execute("SELECT * FROM users WHERE id = ?", (user_id,))
+  user = cur.fetchone()
+  updated_user = dict(user)
+  if 'password' in updated_user:
+    del updated_user['password']
+
+  if not updated_user:
+    cur.close()
+    db.close()
+    abort(404, "Failed to retrieve updated user")
+
   db.commit()
   cur.close()
   db.close()
 
-  return jsonify({'msg': 'Profile updated successfully', 'status': 200})
+  return jsonify({
+    'msg': 'Profile updated successfully',
+    'status': 200,
+    'user': updated_user
+    })
