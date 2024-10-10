@@ -64,5 +64,11 @@ Depending on your environment, you may need to install the python-dotenv package
           JSON: name, email, phone_number, message
       Return: success
 
-8.  
+8.  PUT /profile
+      Body
+          JSON: firstname, lastname, email, password, phone_number
+      Constraints: 
+        - only phone_number is optional
+      Return:
+        - A Json of the updated data.
 ```
