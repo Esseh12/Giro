@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 
-const CountdownTimer = () => {
+export const CountdownTimer = () => {
   // flashsales countdown timer
   // Calculate the target time which is 3 days (72 hours) from now in milliseconds
   const targetTime = Date.now() + 3 * 24 * 60 * 60 * 1000;
@@ -65,4 +65,4 @@ const CountdownTimer = () => {
   );
 };
 
-export default CountdownTimer;
+export const Carousel = () => {};

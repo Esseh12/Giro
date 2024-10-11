@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import axios from "axios";
-import CountdownTimer from "../homepagefunction";
+import { CountdownTimer } from "../homepagefunction";
 import "../../styles/homepage.css";
 import { Link } from "react-router-dom";
 import Top from "../top";
@@ -14,6 +14,7 @@ import IphoneImge from "../../assets/hero_endframe__cvklg0xk3w6e_large 2.svg";
 import appleLogo from "../../assets/1200px-Apple_gray_logo 1.svg";
 import { IoMdArrowForward } from "react-icons/io";
 import womanInHat from "../../assets/attractive-woman-wearing-hat-posing-black.svg";
+import jblSpeaker from "../../assets/jbl-boomplay.svg";
 
 const Homepage = () => {
   const [products, setProducts] = useState([]);
@@ -188,7 +189,12 @@ const Homepage = () => {
           <div></div>
         </section>
         {/* store add section */}
-        <section></section>
+        <section>
+          <div></div>
+          <div>
+            <img src={jblSpeaker} alt="jbl speaker" />
+          </div>
+        </section>
         {/* explore our product section */}
         <section>
           <div></div>
