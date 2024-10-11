@@ -1,3 +1,7 @@
+"""
+This is necessary to replace the .jpg to .svg in the image url field
+in the database for all records of the products table
+"""
 from models.db import getDB
 
 
