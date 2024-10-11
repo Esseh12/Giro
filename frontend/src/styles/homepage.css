@@ -2,7 +2,27 @@
   display: flex;
   flex-direction: column;
   width: 100vw;
-  gap: 1.2rem;
+  gap: 6rem;
+}
+
+.homepage-header {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+}
+
+.homepage-red-icon {
+    background-color: var(--primary-red);
+    border: 1px solid var(--primary-red);
+    border-radius: 3px;
+    height: 2rem;
+    width: 1rem;
+}
+
+.homepage-title {
+    color: var(--primary-red);
+    font-size: 0.99rem;
+    font-weight: 600;
 }
 
 /* top section for homepaage */
@@ -70,47 +90,178 @@
     gap: 0.55rem;
 }
 
-.shop-now-link{
-    text-decoration: none;
-    color: var(--primary-text-lightcolor);
+/* flash sales container */
+.flashsales-section{
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+    padding-left: 8rem;
 }
 
-.shop-now-link:hover{
-    border-bottom: 1px solid var(--primary-border-color);
+.flashsales-top-container{
+    display: flex;
+    justify-content: space-between; 
+    align-items: center;
+    width: 85vw;
 }
+
+.flashsales-countdown{
+    display: flex;
+    gap: 3.5rem;
+    align-items: center;
+}
+
+.flashsales-countdown-main{
+    flex-direction: column;
+    display: flex;
+    gap: 0.6rem;
+}
+
+.flashsales-countdown-date{
+    display: flex;
+}
+
+.flashsales-countdown-date{
+    display: flex;
+    gap: 1.5rem;
+}
+
+.flashsales-countdown-date p{
+    font-size: 0.99rem;
+    font-weight: 600;
+}
+
+.flashsales-countdown-time{
+    display: flex;
+    gap: 1.5rem;
+}
+
+.flashsales-countdown-time{
+    font-size: 1.5rem;
+    display: flex;
+    gap: 1.25rem;
+    font-size: 1.7rem;
+    font-weight: 800;
+}
+
+.flashsales-countdown-time h4{
+    color: var(--primary-red);
+}
+
+.flashsales-nav-arrow{
+    display: flex;
+    gap: 1.5rem;
+}
+
+.flashsales-nav-arrow-container{
+    border: 1px solid #f5f5f5;
+    background-color: #f5f5f5;
+    border-radius: 999px;
+    height: 2.6rem;
+    width: 2.6rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.flashsales-nav-arrow-icon{
+    font-size: 1.9rem;
+    color: var(--primary-black);
+}
+
+
+
+
+
+
+
+
+
+
+
 
 /* new arrival container */
 .new-arrivals-section{
     display: flex;
     flex-direction: column;
-    gap: 1rem;
+    gap: 2rem;
     padding-left: 8rem;
 }
 
-.new-arrivals-header{
-    display: flex;
-    align-items: center;
-    gap: 0.75rem;
+.new-arrival-heading{
+    font-size: 1.7rem;
 }
 
-.new-arrivals-icon{
-    background-color: var(--primary-red);
-    border: 1px solid var(--primary-red);
-    border-radius: 6px;
-    height: 2.3rem;
-    width: 1.1rem;
-}
-
-.new-arrivals-title{
-    color: var(--primary-red);
-    font-size: 1.1rem;
-    font-weight: 600;
+.new-arrivals-grid{
+    display: grid;
+    grid-template-columns: 2fr 1fr 1fr;
+    grid-template-rows: auto auto;
+    gap: 2rem;
+    max-width: 85vw;
+    position: relative;
 }
 
 .new-arrivals-item{
+    padding: 1rem 0rem 0rem 0rem;
     background-color: var(--primary-black);
     color: var(--primary-text-lightcolor);
+    border: 1px solid var(--primary-black);
+    border-radius: 3px;
+}
+
+.new-arrivals-info{
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    padding: 1rem;
+}
+
+.new-arrivals-name{
+    font-size: 1.4rem;
+}
+
+.women-collections {
+    grid-column: span 2;
+    grid-row: span 1;
+    background-color: var(--primary-black);
     display: flex;
     flex-direction: row-reverse;
-    width: auto;
+    align-items: center;
+    justify-content: space-around;
+}
+
+.women-image {
+    width: 23rem;
+}
+.featured-item {
+    background-color: var(--primary-black);
+    background: url("../assets/ps5-slim-goedkope-playstation_large.svg") no-repeat center;
+    background-color: var(--primary-black);
+    grid-column: span 1;
+    grid-row: span 2;
+    place-content: end;
+}
+
+.speakers{
+    background: url("../assets/Frame-707.svg") no-repeat center;
+    background-color: var(--primary-black);
+    grid-column: span 1;
+    place-content: end;
+}
+
+.perfume{
+    height: 16.5rem;
+    background: url("../assets/Frame-706.svg") no-repeat center;
+    background-color: var(--primary-black);
+    grid-column: span 1;
+    place-content: end;
+}
+
+.new-shop-now-link{
+    color: var(--primary-text-lightcolor);
+    text-decoration: none;
+}
+
+.new-shop-now-link:hover{
+    color: var(--primary-red);
 }
