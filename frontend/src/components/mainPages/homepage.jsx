@@ -1,4 +1,6 @@
 import { useState, useEffect } from "react";
+import axios from "axios";
+import CountdownTimer from "../homepagefunction";
 import "../../styles/homepage.css";
 import { Link } from "react-router-dom";
 import Top from "../top";
@@ -6,56 +8,33 @@ import Navbar from "../navbar";
 import Stats from "../stats";
 import Footer from "../footer";
 import { IoIosArrowRoundForward, IoIosArrowRoundBack } from "react-icons/io";
-
+import { FiEye } from "react-icons/fi";
+import { AiOutlineHeart } from "react-icons/ai";
 import IphoneImge from "../../assets/hero_endframe__cvklg0xk3w6e_large 2.svg";
 import appleLogo from "../../assets/1200px-Apple_gray_logo 1.svg";
 import { IoMdArrowForward } from "react-icons/io";
 import womanInHat from "../../assets/attractive-woman-wearing-hat-posing-black.svg";
 
 const Homepage = () => {
-  // flashsales countdown timer
-  // Calculate the target time which is 3 days (72 hours) from now in milliseconds
-  const targetTime = Date.now() + 3 * 24 * 60 * 60 * 1000;
+  const [products, setProducts] = useState([]);
 
-  // Function to calculate the time remaining
-  const calculateTimeLeft = () => {
-    // Get the difference between the target time and the current time
-    const difference = targetTime - Date.now();
-
-    // Initialize an empty object to store time left
-    let timeLeft = {};
-
-    // If there's still time remaining
-    if (difference > 0) {
-      // Calculate the remaining days, hours, minutes, and seconds
-      timeLeft = {
-        days: Math.floor(difference / (1000 * 60 * 60 * 24)), // Remaining days
-        hours: Math.floor((difference / (1000 * 60 * 60)) % 24), // Remaining hours
-        minutes: Math.floor((difference / 1000 / 60) % 60), // Remaining minutes
-        seconds: Math.floor((difference / 1000) % 60), // Remaining seconds
-      };
-    } else {
-      // If the countdown is over, set everything to 0
-      timeLeft = { days: 0, hours: 0, minutes: 0, seconds: 0 };
-    }
-
-    // Return the calculated time left
-    return timeLeft;
-  };
-
-  // useState hook to store the time left, initialized with the calculateTimeLeft function
-  const [timeLeft, setTimeLeft] = useState(calculateTimeLeft());
-
-  // useEffect hook to update the countdown every second
+  // useEffect to fetch products when the component loads
   useEffect(() => {
-    // Set an interval to update the time every 1000ms (1 second)
-    const timer = setInterval(() => {
-      setTimeLeft(calculateTimeLeft()); // Update the state with the new time left
-    }, 1000);
-
-    // Cleanup the interval when the component is unmounted
-    return () => clearInterval(timer);
-  }, []); // Empty dependency array so the effect runs only once when the component mounts
+    axios
+      .get("https://giro-fz5q.onrender.com/")
+      .then((response) => {
+        console.log(response.data); // Check the structure of the response
+        // Set products from the correct path in the API response
+        if (Array.isArray(response.data.data.flash_sales)) {
+          setProducts(response.data.data.flash_sales); // Access the 'flash sales ' array
+        } else {
+          console.error("Unexpected response format:", response.data);
+        }
+      })
+      .catch((error) => {
+        console.error("Error fetching products:", error); // Handle errors
+      });
+  }, []); // Empty array ensures this effect runs only once when the component mounts
 
   return (
     <>
@@ -136,22 +115,7 @@ const Homepage = () => {
           <div className="flashsales-top-container">
             <div className="flashsales-countdown">
               <h2 className="new-arrival-heading">Flash Sales</h2>
-              <div className="flashsales-countdown-main">
-                <div className="flashsales-countdown-date">
-                  <p>Days</p>
-                  <p>Hours</p>
-                  <p>Minutes</p>
-                  <p>Seconds</p>
-                </div>
-                <span className="flashsales-countdown-time">
-                  {timeLeft.days}
-                  <h4>:</h4>
-                  {timeLeft.hours}
-                  <h4>:</h4> {timeLeft.minutes}
-                  <h4>:</h4>
-                  {timeLeft.seconds}
-                </span>
-              </div>
+              <CountdownTimer />
             </div>
             <div className="flashsales-nav-arrow">
               <div className="flashsales-nav-arrow-container">
@@ -162,7 +126,56 @@ const Homepage = () => {
               </div>
             </div>
           </div>
-          <div></div>
+          {/* flash sales items */}
+          <div>
+            <ul className="flashsales-items-container">
+              {/* Render products if it's an array */}
+              {Array.isArray(products) && products.length > 0 ? (
+                products.map((product) => (
+                  <li key={product.id} className="flashsales-subcontainer-item">
+                    <div className="flashsales-single-image">
+                      <img
+                        src={`/products/${product.image_url}`}
+                        alt={product.name}
+                      />
+                      <p className="product-discount">-{product.discount}%</p>
+                      <div className="flashsales-icon-container">
+                        <div className="flashsales-icon-background">
+                          <AiOutlineHeart className="flashsales-icon" />
+                        </div>
+                        <div className="flashsales-icon-background">
+                          <FiEye className="flashsales-icon" />
+                        </div>
+                      </div>
+                      <div className="flashsales-cart-option">
+                        <p className="flashsales-cart-option-text">
+                          Add To Cart
+                        </p>
+                      </div>
+                    </div>
+                    <h2 className="flashsale-product-name">{product.name}</h2>
+                    <div className="price-container">
+                      <p className="discounted-price">
+                        $
+                        {product.price -
+                          (product.price * product.discount) / 100}
+                      </p>
+                      <p className="original-price">${product.price}</p>
+                    </div>
+                    <p>
+                      {Array(product.rating)
+                        .fill("⭐")
+                        .map((star, index) => (
+                          <span key={index}>{star}</span>
+                        ))}
+                    </p>
+                  </li>
+                ))
+              ) : (
+                <p>No products found.</p>
+              )}
+            </ul>
+          </div>
         </section>
         {/* browse by categories section */}
         <section>
