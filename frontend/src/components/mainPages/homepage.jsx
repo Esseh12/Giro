@@ -189,10 +189,23 @@ const Homepage = () => {
           <div></div>
         </section>
         {/* store add section */}
-        <section>
-          <div></div>
-          <div>
-            <img src={jblSpeaker} alt="jbl speaker" />
+        <section className="music-promo-container">
+          <div className="music-promo">
+            <div className="music-promo-content">
+              <p className="music-promo-category">Categories</p>
+              <h1 className="music-promo-title">
+                Enhance Your <br /> Music Experience
+              </h1>
+              <CountdownTimer className="music-promo-timer" />
+              <button className="music-promo-button">Buy Now!</button>
+            </div>
+            <div className="music-promo-image-container">
+              <img
+                className="music-promo-image"
+                src={jblSpeaker}
+                alt="jbl speaker"
+              />
+            </div>
           </div>
         </section>
         {/* explore our product section */}

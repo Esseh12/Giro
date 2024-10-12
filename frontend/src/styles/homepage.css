@@ -272,6 +272,40 @@
 }
 
 
+/* music section */
+.music-promo-container{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.music-promo{
+    display: flex;
+    background-color: var(--primary-black);
+    color: var(--primary-text-lightcolor);
+    width: 78vw;
+    height: 58vh;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0rem 4rem;
+}
+
+.music-promo-content{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    gap: 1.5rem;
+}
+
+.music-promo-category{
+    color: #00ff66;
+    font-size: 1.2rem;
+    font-weight: 600;
+}
+
+.music-promo-title{
+    font-size: 3rem;
+}
 
 
 
