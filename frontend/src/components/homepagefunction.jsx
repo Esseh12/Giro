@@ -65,4 +65,6 @@ export const CountdownTimer = () => {
   );
 };
 
-export const Carousel = () => {};
+export const TimeLeft = ({ timeLeft }) => {
+  return timeLeft;
+};

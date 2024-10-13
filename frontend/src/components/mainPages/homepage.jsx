@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useContext } from "react";
 import axios from "axios";
 import { CountdownTimer } from "../homepagefunction";
 import "../../styles/homepage.css";
@@ -15,19 +15,56 @@ import appleLogo from "../../assets/1200px-Apple_gray_logo 1.svg";
 import { IoMdArrowForward } from "react-icons/io";
 import womanInHat from "../../assets/attractive-woman-wearing-hat-posing-black.svg";
 import jblSpeaker from "../../assets/jbl-boomplay.svg";
+import { CartContext } from "./Homepage/cartContext";
 
 const Homepage = () => {
   const [products, setProducts] = useState([]);
+  const [flashSales, setFlashSales] = useState([]); // For flash sales products
+  const [bestSeller, setBestSeller] = useState([]); // For best selling products
+  const [allProduct, setAllProduct] = useState([]);
+  // render only 8 products initially
+  const [visibleCount, setVisibleProduct] = useState(8);
+  const { addToCart } = useContext(CartContext);
 
   // useEffect to fetch products when the component loads
   useEffect(() => {
     axios
       .get("https://giro-fz5q.onrender.com/")
       .then((response) => {
-        console.log(response.data); // Check the structure of the response
         // Set products from the correct path in the API response
-        if (Array.isArray(response.data.data.flash_sales)) {
-          setProducts(response.data.data.flash_sales); // Access the 'flash sales ' array
+        if (response.data && response.data.data) {
+          // Set all products
+          setProducts(response.data.data || [] || products);
+
+          // Set flash sales if available
+          if (Array.isArray(response.data.data.flash_sales)) {
+            setFlashSales(response.data.data.flash_sales);
+          } else {
+            console.error(
+              "Unexpected flash_sales format:",
+              response.data.data.flash_sales
+            );
+          }
+
+          // Set best-selling products if available
+          if (Array.isArray(response.data.data.best_selling_products)) {
+            setBestSeller(response.data.data.best_selling_products);
+          } else {
+            console.error(
+              "Unexpected best_selling format:",
+              response.data.data.best_selling
+            );
+          }
+
+          // for all products
+          if (Array.isArray(response.data.data.all_products)) {
+            setAllProduct(response.data.data.all_products);
+          } else {
+            console.error(
+              "Unexpected all product format:",
+              response.data.data.best_selling
+            );
+          }
         } else {
           console.error("Unexpected response format:", response.data);
         }
@@ -35,7 +72,17 @@ const Homepage = () => {
       .catch((error) => {
         console.error("Error fetching products:", error); // Handle errors
       });
-  }, []); // Empty array ensures this effect runs only once when the component mounts
+  }, [products]); // Empty array ensures this effect runs only once when the component mounts
+
+  // Handle button click to load more products
+  const loadMore = () => {
+    setVisibleProduct((prevCount) => prevCount + 8); // Increase the visible count by 8
+  };
+
+  // Handle button click to show less products
+  const showLess = () => {
+    setVisibleProduct(8); // Reset to initial 8 products
+  };
 
   return (
     <>
@@ -131,8 +178,8 @@ const Homepage = () => {
           <div>
             <ul className="flashsales-items-container">
               {/* Render products if it's an array */}
-              {Array.isArray(products) && products.length > 0 ? (
-                products.map((product) => (
+              {Array.isArray(flashSales) && flashSales.length > 0 ? (
+                flashSales.map((product) => (
                   <li key={product.id} className="flashsales-subcontainer-item">
                     <div className="flashsales-single-image">
                       <img
@@ -149,7 +196,10 @@ const Homepage = () => {
                         </div>
                       </div>
                       <div className="flashsales-cart-option">
-                        <p className="flashsales-cart-option-text">
+                        <p
+                          className="flashsales-cart-option-text"
+                          onClick={() => addToCart(product)}
+                        >
                           Add To Cart
                         </p>
                       </div>
@@ -184,9 +234,72 @@ const Homepage = () => {
           <div></div>
         </section>
         {/* best selling product section */}
-        <section>
-          <div></div>
-          <div></div>
+        <section className="best-selling-section">
+          <div className="homepage-header">
+            <div className="homepage-red-icon"></div>
+            {/* Add an icon or visual indicator */}
+            <p className="homepage-title">This Month</p>
+          </div>
+          <div className="flashsales-top-container">
+            <h2 className="new-arrival-heading">Best Selling Products</h2>
+            <div className="flashsales-nav-arrow">
+              <button>View All</button>
+            </div>
+          </div>
+          <div>
+            {/* best sellings items */}
+            <div>
+              <ul className="flashsales-items-container">
+                {/* Render products if it's an array */}
+                {Array.isArray(bestSeller) && bestSeller.length > 0 ? (
+                  bestSeller.map((product) => (
+                    <li
+                      key={product.id}
+                      className="flashsales-subcontainer-item"
+                    >
+                      <div className="flashsales-single-image">
+                        <img
+                          src={`/products/${product.image_url}`}
+                          alt={product.name}
+                        />
+                        <div className="flashsales-icon-container">
+                          <div className="flashsales-icon-background">
+                            <AiOutlineHeart className="flashsales-icon" />
+                          </div>
+                          <div className="flashsales-icon-background">
+                            <FiEye className="flashsales-icon" />
+                          </div>
+                        </div>
+                        <div className="flashsales-cart-option">
+                          <p className="flashsales-cart-option-text">
+                            Add To Cart
+                          </p>
+                        </div>
+                      </div>
+                      <h2 className="flashsale-product-name">{product.name}</h2>
+                      <div className="price-container">
+                        <p className="discounted-price">
+                          $
+                          {product.price -
+                            (product.price * product.discount) / 100}
+                        </p>
+                        <p className="original-price">${product.price}</p>
+                      </div>
+                      <p>
+                        {Array(product.rating)
+                          .fill("⭐")
+                          .map((star, index) => (
+                            <span key={index}>{star}</span>
+                          ))}
+                      </p>
+                    </li>
+                  ))
+                ) : (
+                  <p>No products found.</p>
+                )}
+              </ul>
+            </div>
+          </div>
         </section>
         {/* store add section */}
         <section className="music-promo-container">
@@ -208,11 +321,84 @@ const Homepage = () => {
             </div>
           </div>
         </section>
+
         {/* explore our product section */}
-        <section>
-          <div></div>
-          <div></div>
-          <div></div>
+        <section className="all-product-section">
+          <div className="homepage-header">
+            <div className="homepage-red-icon"></div>
+            {/* Add an icon or visual indicator */}
+            <p className="homepage-title">Our Product</p>
+          </div>
+          <div className="flashsales-top-container">
+            <div className="flashsales-countdown">
+              <h2 className="new-arrival-heading">Explore Our Products</h2>
+            </div>
+            <div className="flashsales-nav-arrow">
+              <div className="flashsales-nav-arrow-container">
+                <IoIosArrowRoundBack className="flashsales-nav-arrow-icon" />
+              </div>
+              <div className="flashsales-nav-arrow-container">
+                <IoIosArrowRoundForward className="flashsales-nav-arrow-icon" />
+              </div>
+            </div>
+          </div>
+          <div>
+            <ul className="all-product-items-container">
+              {/* Render products if it's an array */}
+              {Array.isArray(allProduct) && allProduct.length > 0 ? (
+                allProduct.slice(0, visibleCount).map((product) => (
+                  <li key={product.id} className="flashsales-subcontainer-item">
+                    <div className="flashsales-single-image">
+                      <img
+                        src={`/products/${product.image_url}`}
+                        alt={product.name}
+                      />
+                      <div className="flashsales-icon-container">
+                        <div className="flashsales-icon-background">
+                          <AiOutlineHeart className="flashsales-icon" />
+                        </div>
+                        <div className="flashsales-icon-background">
+                          <FiEye className="flashsales-icon" />
+                        </div>
+                      </div>
+                      <div className="flashsales-cart-option">
+                        <p className="flashsales-cart-option-text">
+                          Add To Cart
+                        </p>
+                      </div>
+                    </div>
+                    <h2 className="flashsale-product-name">{product.name}</h2>
+                    <div className="price-container">
+                      <p className="original-price">${product.price}</p>
+                    </div>
+                    <p>
+                      {Array(product.rating)
+                        .fill("⭐")
+                        .map((star, index) => (
+                          <span key={index}>{star}</span>
+                        ))}
+                    </p>
+                  </li>
+                ))
+              ) : (
+                <p>No products found.</p>
+              )}
+
+              {/* Show the 'Load More' button only if there are more products to show */}
+              {visibleCount < allProduct.length && (
+                <button onClick={loadMore} className="load-more-button">
+                  Load More
+                </button>
+              )}
+
+              {/* Show the 'Show Less' button after 'Load More' has been clicked */}
+              {visibleCount > 8 && (
+                <button onClick={showLess} className="show-less-button">
+                  Show Less
+                </button>
+              )}
+            </ul>
+          </div>
         </section>
 
         {/* New Arrivals Section */}

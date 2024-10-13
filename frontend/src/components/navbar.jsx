@@ -1,6 +1,6 @@
 import { useState } from "react";
 import logo from "../assets/giro_logo.png";
-import { NavLink, Link } from "react-router-dom";
+import { NavLink, Link, useNavigate } from "react-router-dom";
 import "../styles/navbar.css";
 import { IoMdSearch } from "react-icons/io";
 import { FaRegHeart } from "react-icons/fa";
@@ -13,9 +13,14 @@ import { TbLogout2 } from "react-icons/tb";
 
 const Navbar = () => {
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
+  const navigate = useNavigate();
 
   const toggleDropdown = () => {
     setIsDropdownOpen(!isDropdownOpen);
+  };
+
+  const handleCartClick = () => {
+    navigate("/cart");
   };
 
   return (
@@ -60,7 +65,7 @@ const Navbar = () => {
           </div>
           <div className="navbar-icons">
             <FaRegHeart className="navbar-icon" />
-            <BsCart3 className="navbar-icon" />
+            <BsCart3 className="navbar-icon" onClick={handleCartClick} />
 
             {/* icon with dropdowns */}
             <div className="user-icon-container">

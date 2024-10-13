@@ -91,7 +91,9 @@
 }
 
 /* flash sales container */
-.flashsales-section{
+.flashsales-section,
+.best-selling-section,
+.all-product-section{
     display: flex;
     flex-direction: column;
     gap: 2rem;
@@ -288,13 +290,15 @@
     justify-content: space-between;
     align-items: center;
     padding: 0rem 4rem;
+    border: 1px solid var(--primary-black);
+    border-radius: 5px;
 }
 
 .music-promo-content{
     display: flex;
     flex-direction: column;
     justify-content: space-between;
-    gap: 1.5rem;
+    gap: 1.8rem;
 }
 
 .music-promo-category{
@@ -307,9 +311,22 @@
     font-size: 3rem;
 }
 
+.music-promo-button{
+    width: 8rem;
+    height: 3rem;
+    color: var(--primary-text-lightcolor);
+    background-color: #00ff66;
+    border: 1px solid #00ff66;
+    border-radius: 5px;
+    font-size: 1.1rem;
+}
 
 
-
+/*  explore all products section */
+.all-product-items-container{
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+}
 
 
 
