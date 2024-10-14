@@ -1,6 +1,7 @@
 import "../../styles/homepage.css";
 import { useState, useEffect, useContext } from "react";
 import { CartContext } from "./Homepage/cartContext";
+import { WishlistContext } from "./Homepage/wishlistContext";
 import { CountdownTimer } from "../homepagefunction";
 import { Link } from "react-router-dom";
 import {
@@ -29,6 +30,7 @@ const Homepage = () => {
   const [allProduct, setAllProduct] = useState([]); // for all products
   const [visibleCount, setVisibleProduct] = useState(8); // render only 8 products initially
   const { addToCart } = useContext(CartContext); // Get the addToCart function from the context
+  const { addToWishlist } = useContext(WishlistContext); // Get the addToWishlist function from the context
 
   useEffect(() => {
     // useEffect to fetch products when the component loads
@@ -200,7 +202,10 @@ const Homepage = () => {
                       <p className="product-discount">-{product.discount}%</p>
                       <div className="flashsales-icon-container">
                         <div className="flashsales-icon-background">
-                          <AiOutlineHeart className="flashsales-icon" />
+                          <AiOutlineHeart
+                            className="flashsales-icon"
+                            onClick={() => addToWishlist(product)}
+                          />
                         </div>
                         <div className="flashsales-icon-background">
                           <FiEye className="flashsales-icon" />
@@ -240,10 +245,10 @@ const Homepage = () => {
           </div>
         </section>
         {/* browse by categories section */}
-        <section>
+        {/* <section>
           <div></div>
           <div></div>
-        </section>
+        </section> */}
 
         {/* best selling product section */}
         <section className="best-selling-section">
@@ -276,7 +281,10 @@ const Homepage = () => {
                         />
                         <div className="flashsales-icon-container">
                           <div className="flashsales-icon-background">
-                            <AiOutlineHeart className="flashsales-icon" />
+                            <AiOutlineHeart
+                              className="flashsales-icon"
+                              onClick={() => addToWishlist(product)}
+                            />
                           </div>
                           <div className="flashsales-icon-background">
                             <FiEye className="flashsales-icon" />
@@ -377,7 +385,10 @@ const Homepage = () => {
                       />
                       <div className="flashsales-icon-container">
                         <div className="flashsales-icon-background">
-                          <AiOutlineHeart className="flashsales-icon" />
+                          <AiOutlineHeart
+                            className="flashsales-icon"
+                            onClick={() => addToWishlist(product)}
+                          />
                         </div>
                         <div className="flashsales-icon-background">
                           <FiEye className="flashsales-icon" />

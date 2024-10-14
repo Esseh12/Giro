@@ -1,5 +1,6 @@
 import { useState, useContext } from "react";
 import { CartContext } from "./mainPages/Homepage/cartContext";
+import { WishlistContext } from "./mainPages/Homepage/wishlistContext";
 import logo from "../assets/giro_logo.png";
 import { NavLink, Link, useNavigate } from "react-router-dom";
 import "../styles/navbar.css";
@@ -24,10 +25,17 @@ const Navbar = () => {
     navigate("/cart");
   };
 
+  const handleWishlistClick = () => {
+    navigate("/wishlist");
+  };
+
   // Get the total item  function from the context
   const { getTotalItems } = useContext(CartContext);
   // Get the total item count
   const totalItems = getTotalItems();
+
+  const { getTotalWishlistItems } = useContext(WishlistContext);
+  const totalWishlistItems = getTotalWishlistItems();
 
   return (
     <>
@@ -70,7 +78,15 @@ const Navbar = () => {
             <IoMdSearch className="navbar-search-icon" />
           </div>
           <div className="navbar-icons">
-            <FaRegHeart className="navbar-icon" />
+            <div className="cart-container">
+              <FaRegHeart
+                className="navbar-icon"
+                onClick={handleWishlistClick}
+              />
+              <div className="cart-quantity">
+                <p>{totalWishlistItems}</p>
+              </div>
+            </div>
             <div className="cart-container">
               <BsCart3 className="navbar-icon" onClick={handleCartClick} />
               <div className="cart-quantity">
