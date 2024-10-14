@@ -7,6 +7,7 @@ import Top from "../top";
 import Navbar from "../navbar";
 import Stats from "../stats";
 import Footer from "../footer";
+import Loader from "../loader";
 import { IoIosArrowRoundForward, IoIosArrowRoundBack } from "react-icons/io";
 import { FiEye } from "react-icons/fi";
 import { AiOutlineHeart } from "react-icons/ai";
@@ -18,6 +19,7 @@ import jblSpeaker from "../../assets/jbl-boomplay.svg";
 import { CartContext } from "./Homepage/cartContext";
 
 const Homepage = () => {
+  const [loading, setLoading] = useState(true); // State for loading
   const [products, setProducts] = useState([]);
   const [flashSales, setFlashSales] = useState([]); // For flash sales products
   const [bestSeller, setBestSeller] = useState([]); // For best selling products
@@ -34,7 +36,7 @@ const Homepage = () => {
         // Set products from the correct path in the API response
         if (response.data && response.data.data) {
           // Set all products
-          setProducts(response.data.data || [] || products);
+          setProducts(response.data.data || []);
 
           // Set flash sales if available
           if (Array.isArray(response.data.data.flash_sales)) {
@@ -62,7 +64,7 @@ const Homepage = () => {
           } else {
             console.error(
               "Unexpected all product format:",
-              response.data.data.best_selling
+              response.data.data.all_products
             );
           }
         } else {
@@ -71,8 +73,15 @@ const Homepage = () => {
       })
       .catch((error) => {
         console.error("Error fetching products:", error); // Handle errors
+      })
+      .finally(() => {
+        setLoading(false); // Set loading to false once data is fetched
       });
-  }, [products]); // Empty array ensures this effect runs only once when the component mounts
+  }, []); // Empty array ensures this effect runs only once when the component mounts
+
+  if (loading) {
+    return <Loader />; // Render loader while loading
+  }
 
   // Handle button click to load more products
   const loadMore = () => {
@@ -233,6 +242,7 @@ const Homepage = () => {
           <div></div>
           <div></div>
         </section>
+
         {/* best selling product section */}
         <section className="best-selling-section">
           <div className="homepage-header">
@@ -271,7 +281,10 @@ const Homepage = () => {
                           </div>
                         </div>
                         <div className="flashsales-cart-option">
-                          <p className="flashsales-cart-option-text">
+                          <p
+                            className="flashsales-cart-option-text"
+                            onClick={() => addToCart(product)}
+                          >
                             Add To Cart
                           </p>
                         </div>
@@ -334,12 +347,19 @@ const Homepage = () => {
               <h2 className="new-arrival-heading">Explore Our Products</h2>
             </div>
             <div className="flashsales-nav-arrow">
-              <div className="flashsales-nav-arrow-container">
-                <IoIosArrowRoundBack className="flashsales-nav-arrow-icon" />
-              </div>
-              <div className="flashsales-nav-arrow-container">
-                <IoIosArrowRoundForward className="flashsales-nav-arrow-icon" />
-              </div>
+              {/* Show the 'Load More' button only if there are more products to show */}
+              {visibleCount < allProduct.length && (
+                <button onClick={loadMore} className="load-more-button">
+                  Load More
+                </button>
+              )}
+
+              {/* Show the 'Show Less' button after 'Load More' has been clicked */}
+              {visibleCount > 8 && (
+                <button onClick={showLess} className="load-more-button">
+                  Show Less
+                </button>
+              )}
             </div>
           </div>
           <div>
@@ -348,7 +368,7 @@ const Homepage = () => {
               {Array.isArray(allProduct) && allProduct.length > 0 ? (
                 allProduct.slice(0, visibleCount).map((product) => (
                   <li key={product.id} className="flashsales-subcontainer-item">
-                    <div className="flashsales-single-image">
+                    <div className="flashsales-single-image allproducts-single-img">
                       <img
                         src={`/products/${product.image_url}`}
                         alt={product.name}
@@ -362,40 +382,29 @@ const Homepage = () => {
                         </div>
                       </div>
                       <div className="flashsales-cart-option">
-                        <p className="flashsales-cart-option-text">
+                        <p
+                          className="flashsales-cart-option-text"
+                          onClick={() => addToCart(product)}
+                        >
                           Add To Cart
                         </p>
                       </div>
                     </div>
                     <h2 className="flashsale-product-name">{product.name}</h2>
-                    <div className="price-container">
-                      <p className="original-price">${product.price}</p>
+                    <div className="price-container all-product-price">
+                      <p className="discounted-price">${product.price}</p>
+                      <p>
+                        {Array(product.rating)
+                          .fill("⭐")
+                          .map((star, index) => (
+                            <span key={index}>{star}</span>
+                          ))}
+                      </p>
                     </div>
-                    <p>
-                      {Array(product.rating)
-                        .fill("⭐")
-                        .map((star, index) => (
-                          <span key={index}>{star}</span>
-                        ))}
-                    </p>
                   </li>
                 ))
               ) : (
                 <p>No products found.</p>
-              )}
-
-              {/* Show the 'Load More' button only if there are more products to show */}
-              {visibleCount < allProduct.length && (
-                <button onClick={loadMore} className="load-more-button">
-                  Load More
-                </button>
-              )}
-
-              {/* Show the 'Show Less' button after 'Load More' has been clicked */}
-              {visibleCount > 8 && (
-                <button onClick={showLess} className="show-less-button">
-                  Show Less
-                </button>
               )}
             </ul>
           </div>

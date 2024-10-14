@@ -80,15 +80,11 @@
     align-items: center;
     justify-content: center;
     height: 100vh;
-    /* Full viewport height */
-    background-color: rgba(255, 255, 255, 0.8);
-    /* Light background */
+    background-color: rgba(255, 255, 255, 0.475);
     position: fixed;
-    /* Cover the entire screen */
     top: 0;
-    left: 0;
+    left: 50%;
     z-index: 999;
-    /* Ensure it appears above other content */
 }
 
 .loader {
@@ -101,10 +97,8 @@
     width: 15px;
     height: 15px;
     margin: 0 5px;
-    background-color: #007bff;
-    /* Color of the dots */
+    background-color: var(--primary-red);
     border-radius: 50%;
-    /* Circular dots */
     animation: bounce 0.6s infinite alternate;
 }
 
@@ -130,7 +124,5 @@
 p {
     margin-top: 10px;
     font-size: 18px;
-    /* Font size for loading text */
     color: #555;
-    /* Color of the loading text */
 }
