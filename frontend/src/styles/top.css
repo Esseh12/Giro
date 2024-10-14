@@ -71,3 +71,66 @@
         font-size: 1.1rem;
     }
 }
+
+
+/* loader component */
+.loader-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    /* Full viewport height */
+    background-color: rgba(255, 255, 255, 0.8);
+    /* Light background */
+    position: fixed;
+    /* Cover the entire screen */
+    top: 0;
+    left: 0;
+    z-index: 999;
+    /* Ensure it appears above other content */
+}
+
+.loader {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.dot {
+    width: 15px;
+    height: 15px;
+    margin: 0 5px;
+    background-color: #007bff;
+    /* Color of the dots */
+    border-radius: 50%;
+    /* Circular dots */
+    animation: bounce 0.6s infinite alternate;
+}
+
+.dot:nth-child(2) {
+    animation-delay: 0.2s;
+}
+
+.dot:nth-child(3) {
+    animation-delay: 0.4s;
+}
+
+@keyframes bounce {
+    0% {
+        transform: translateY(0);
+    }
+
+    100% {
+        transform: translateY(-20px);
+        /* Bounce height */
+    }
+}
+
+p {
+    margin-top: 10px;
+    font-size: 18px;
+    /* Font size for loading text */
+    color: #555;
+    /* Color of the loading text */
+}
