@@ -1,4 +1,5 @@
-import { useState } from "react";
+import { useState, useContext } from "react";
+import { CartContext } from "./mainPages/Homepage/cartContext";
 import logo from "../assets/giro_logo.png";
 import { NavLink, Link, useNavigate } from "react-router-dom";
 import "../styles/navbar.css";
@@ -22,6 +23,11 @@ const Navbar = () => {
   const handleCartClick = () => {
     navigate("/cart");
   };
+
+  // Get the total item  function from the context
+  const { getTotalItems } = useContext(CartContext);
+  // Get the total item count
+  const totalItems = getTotalItems();
 
   return (
     <>
@@ -65,7 +71,10 @@ const Navbar = () => {
           </div>
           <div className="navbar-icons">
             <FaRegHeart className="navbar-icon" />
-            <BsCart3 className="navbar-icon" onClick={handleCartClick} />
+            <div className="">
+              <BsCart3 className="navbar-icon" onClick={handleCartClick} />
+              <p className="cart-quantity">{totalItems}</p>
+            </div>
 
             {/* icon with dropdowns */}
             <div className="user-icon-container">
