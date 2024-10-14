@@ -1,4 +1,4 @@
-from flask import Blueprint, jsonify, abort
+from flask import Blueprint, jsonify, abort, request
 from models.db import getDB
 
 
@@ -8,9 +8,27 @@ from models.db import getDB
 
 sales = Blueprint('sales', __name__)
 
-@sales.get('/checkout')
+@sales.post('/checkout') # chnge to post request
 def checkout():
   from app import mail
+
+  user_id = request.cookies.get('token')
+  if not user_id:
+    abort(401, "Not Authorized: You are not logged in!")
+
+  db = getDB()
+  cur = db.cursor()
+  cur.execute('SELECT address, email, firstname, lastname, phone_number FROM users WHERE id = ?', (user_id, ))
+  user = dict(cur.fetchone())
+
+  db.close()
+  cur.close()
+  
+  # constrtuct email here
+  message = \
+  """
+
+  """
 
   msg = 'Congratulations! Here is your receipt'
 

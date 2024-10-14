@@ -71,4 +71,9 @@ Depending on your environment, you may need to install the python-dotenv package
         - must be logged in, and pass in any data that needs to be changed.
       Return:
         - A Json of the updated data.
+
+9. POST /checkout
+      Body
+          JSON: sdfghj
+      Return: success
 ```
