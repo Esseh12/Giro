@@ -20,7 +20,9 @@ export const CartProvider = ({ children }) => {
                 ...cartItem,
                 quantity: cartItem.quantity + 1,
                 totalPrice:
-                  (cartItem.quantity + 1) * cartItem.price || cartItem.price,
+                  cartItem.quantity === 0
+                    ? cartItem.price
+                    : (cartItem.quantity + 1) * cartItem.price,
               }
             : cartItem
         )
@@ -28,7 +30,7 @@ export const CartProvider = ({ children }) => {
     } else {
       setCartItems([
         ...cartItems,
-        { ...item, quantity: 1, totalPrice: item.unitPrice },
+        { ...item, quantity: 1, totalPrice: item.price }, // Add with initial price
       ]);
     }
   };
@@ -45,7 +47,10 @@ export const CartProvider = ({ children }) => {
             ? {
                 ...cartItem,
                 quantity: cartItem.quantity - 1,
-                totalPrice: (cartItem.quantity - 1) * cartItem.price,
+                totalPrice:
+                  cartItem.quantity - 1 === 1
+                    ? cartItem.price // Display original price when quantity is 1
+                    : (cartItem.quantity - 1) * cartItem.price,
               }
             : cartItem
         )
@@ -58,10 +63,7 @@ export const CartProvider = ({ children }) => {
   };
 
   const getCartTotal = () => {
-    return cartItems.reduce(
-      (total, item) => total + item.price * item.quantity,
-      0
-    );
+    return cartItems.reduce((total, item) => total + item.totalPrice, 0);
   };
 
   const getTotalItems = () => {

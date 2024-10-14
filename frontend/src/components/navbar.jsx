@@ -71,9 +71,11 @@ const Navbar = () => {
           </div>
           <div className="navbar-icons">
             <FaRegHeart className="navbar-icon" />
-            <div className="">
+            <div className="cart-container">
               <BsCart3 className="navbar-icon" onClick={handleCartClick} />
-              <p className="cart-quantity">{totalItems}</p>
+              <div className="cart-quantity">
+                <p>{totalItems}</p>
+              </div>
             </div>
 
             {/* icon with dropdowns */}
