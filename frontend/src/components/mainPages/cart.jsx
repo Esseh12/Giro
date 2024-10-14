@@ -16,7 +16,7 @@ const Cart = () => {
     <>
       <Navbar />
       <div className="cart-main-container">
-        <span>
+        <span className="navigation-link">
           <a href="/">Home</a> / <a href="">Cart</a>
         </span>
 
@@ -25,7 +25,7 @@ const Cart = () => {
           <div className="cart-items-container">
             <div className="cart-sub-container">
               <p className="cart-header-text">Product</p>
-              <p className="cart-header-text">Price</p>
+              <p className="cart-header-text price-text">Price</p>
               <p className="cart-header-text">Quantity</p>
               <p className="cart-header-text">Subtotal</p>
             </div>
@@ -37,10 +37,10 @@ const Cart = () => {
                     alt={item.name}
                     className="cart-img"
                   />
-                  <h4 className="cart-item-name">{item.name}</h4>
+                  <p className="cart-item-name">{item.name}</p>
                 </div>
                 <div>
-                  <p className="">${item.price}</p>
+                  <p className="cart-item-price">${item.price}</p>
                 </div>
                 <div className="cart-items-quantity">
                   <button
