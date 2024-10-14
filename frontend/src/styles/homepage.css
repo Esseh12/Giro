@@ -80,6 +80,10 @@
     line-height: 1.35;
 }
 
+.promo-product-name{
+    color: var(--primary-text-lightcolor);
+}
+
 .promo-large-image{
     margin-top: 1rem;
 }
@@ -396,6 +400,10 @@
 
 .new-arrivals-name{
     font-size: 1.4rem;
+}
+
+.new-arrivals-description{
+    color: var(--primary-text-lightcolor);
 }
 
 .women-collections {
