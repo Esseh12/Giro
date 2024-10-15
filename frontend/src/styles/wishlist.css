@@ -1,3 +1,30 @@
+.wishlist-main-section{
+    display: flex;
+    flex-direction: column;
+    gap: 6rem;
+    padding: 3rem 0rem;
+    padding-left: 4rem;
+}
+
+.wishlist-top-section{
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+.wishlist-title-container{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 0.75rem;
+}
+
+.wishlist-bottom-section{
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+}
+
 .wishlist-items{
     display: grid;
     grid-template-columns: repeat(4, 1fr);
@@ -34,4 +61,9 @@
 
 .wishlist-icon {
     font-size: 1.2rem;
+}
+
+/* just for you section */
+.wishlist-featurd-header{
+    justify-content: space-between;
 }
