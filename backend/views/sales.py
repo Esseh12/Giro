@@ -1,15 +1,13 @@
+""" Module contains endpoints concerning sales """
 from flask import Blueprint, jsonify, abort, request
 from models.db import getDB
-
-
-
-# from ..app import mail
 
 
 sales = Blueprint('sales', __name__)
 
 @sales.post('/checkout') # chnge to post request
 def checkout():
+  """ handles checkout """
   from app import mail
 
   user_id = request.cookies.get('token')

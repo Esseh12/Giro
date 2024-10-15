@@ -5,12 +5,14 @@ from flask import Blueprint, jsonify, request, abort, make_response
 from models.db import getDB
 from werkzeug.security import generate_password_hash, check_password_hash
 from uuid import uuid4
+from ..utils import validate_email
 
 
 users = Blueprint('users', __name__)
 
 @users.post('/signup')
 def signup():
+  """ handle sign up """
   if request.content_type != 'application/json':
     abort(415, "Unsupported Media Type: Please supply a json body")
   data = request.json
@@ -26,6 +28,10 @@ def signup():
       abort(400, 'Required: firstname, lastname, email, password')
 
   passwd = generate_password_hash(passwd)
+
+  # validate email (basic)
+  if not validate_email(email):
+    abort(400, 'Email is not valid')  
 
   db = getDB()
   cur = db.cursor()
@@ -50,6 +56,7 @@ def signup():
 
 @users.post("/login")
 def login():
+  """ handle login"""
   if request.content_type != 'application/json':
     abort(415, "Unsupported Media Type: Please supply a json body")
   data = request.json
@@ -87,6 +94,7 @@ def login():
 
 @users.get('/profile')
 def profile():
+  """ handle user profile page """
   # print(list(request.cookies.items()))
   user_id = request.cookies.get('token')
   if not user_id:
@@ -102,6 +110,7 @@ def profile():
 
 @users.get('/logout')
 def logout():
+  """ handle logout endpoint """
   res = make_response(
     jsonify(
       {'msg': 'logged out successfully', 'status': 200}
@@ -113,6 +122,7 @@ def logout():
 
 @users.put('/profile')
 def update_profile():
+  """ handle update profile """
   if request.content_type != 'application/json':
     abort(415, "Unsupported Media Type: Please supply a json body")
 

@@ -42,6 +42,7 @@ def index_route():
 
 @index.post('/contact')
 def contact_us():
+  """ handles contact us route """
   if request.content_type != 'application/json':
     abort(415, "Unsupported Media Type: Please supply a json body")
   data = request.json

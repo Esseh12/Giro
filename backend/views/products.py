@@ -1,3 +1,4 @@
+""" Module contains endpoints concerning product """
 from flask import Blueprint, jsonify, abort
 from models.db import getDB
 
@@ -5,6 +6,7 @@ products = Blueprint('products', __name__)
 
 @products.get('/<id>')
 def single_product(id):
+  """ handles single product endpoint """
   if len(id) != 36:
       abort(404, "Invalid ID: Please supply a valid product ID at least")
   
