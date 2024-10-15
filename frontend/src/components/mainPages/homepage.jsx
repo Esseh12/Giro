@@ -1,35 +1,39 @@
-import { useState, useEffect, useContext } from "react";
-import axios from "axios";
-import { CountdownTimer } from "../homepagefunction";
 import "../../styles/homepage.css";
+import { useState, useEffect, useContext } from "react";
+import { CartContext } from "./Homepage/cartContext";
+import { WishlistContext } from "./Homepage/wishlistContext";
+import { CountdownTimer } from "../homepagefunction";
 import { Link } from "react-router-dom";
+import {
+  IoIosArrowRoundForward,
+  IoIosArrowRoundBack,
+  IoMdArrowForward,
+} from "react-icons/io";
+import { FiEye } from "react-icons/fi";
+import { AiOutlineHeart } from "react-icons/ai";
+import axios from "axios";
 import Top from "../top";
 import Navbar from "../navbar";
 import Stats from "../stats";
 import Footer from "../footer";
 import Loader from "../loader";
-import { IoIosArrowRoundForward, IoIosArrowRoundBack } from "react-icons/io";
-import { FiEye } from "react-icons/fi";
-import { AiOutlineHeart } from "react-icons/ai";
 import IphoneImge from "../../assets/hero_endframe__cvklg0xk3w6e_large 2.svg";
 import appleLogo from "../../assets/1200px-Apple_gray_logo 1.svg";
-import { IoMdArrowForward } from "react-icons/io";
 import womanInHat from "../../assets/attractive-woman-wearing-hat-posing-black.svg";
 import jblSpeaker from "../../assets/jbl-boomplay.svg";
-import { CartContext } from "./Homepage/cartContext";
 
 const Homepage = () => {
   const [loading, setLoading] = useState(true); // State for loading
-  const [products, setProducts] = useState([]);
+  const [products, setProducts] = useState([]); // For all products
   const [flashSales, setFlashSales] = useState([]); // For flash sales products
   const [bestSeller, setBestSeller] = useState([]); // For best selling products
-  const [allProduct, setAllProduct] = useState([]);
-  // render only 8 products initially
-  const [visibleCount, setVisibleProduct] = useState(8);
-  const { addToCart } = useContext(CartContext);
+  const [allProduct, setAllProduct] = useState([]); // for all products
+  const [visibleCount, setVisibleProduct] = useState(8); // render only 8 products initially
+  const { addToCart } = useContext(CartContext); // Get the addToCart function from the context
+  const { addToWishlist } = useContext(WishlistContext); // Get the addToWishlist function from the context
 
-  // useEffect to fetch products when the component loads
   useEffect(() => {
+    // useEffect to fetch products when the component loads
     axios
       .get("https://giro-fz5q.onrender.com/")
       .then((response) => {
@@ -77,7 +81,7 @@ const Homepage = () => {
       .finally(() => {
         setLoading(false); // Set loading to false once data is fetched
       });
-  }, []); // Empty array ensures this effect runs only once when the component mounts
+  }, [products]); // Empty array ensures this effect runs only once when the component mounts
 
   if (loading) {
     return <Loader />; // Render loader while loading
@@ -198,7 +202,10 @@ const Homepage = () => {
                       <p className="product-discount">-{product.discount}%</p>
                       <div className="flashsales-icon-container">
                         <div className="flashsales-icon-background">
-                          <AiOutlineHeart className="flashsales-icon" />
+                          <AiOutlineHeart
+                            className="flashsales-icon"
+                            onClick={() => addToWishlist(product)}
+                          />
                         </div>
                         <div className="flashsales-icon-background">
                           <FiEye className="flashsales-icon" />
@@ -238,10 +245,10 @@ const Homepage = () => {
           </div>
         </section>
         {/* browse by categories section */}
-        <section>
+        {/* <section>
           <div></div>
           <div></div>
-        </section>
+        </section> */}
 
         {/* best selling product section */}
         <section className="best-selling-section">
@@ -274,7 +281,10 @@ const Homepage = () => {
                         />
                         <div className="flashsales-icon-container">
                           <div className="flashsales-icon-background">
-                            <AiOutlineHeart className="flashsales-icon" />
+                            <AiOutlineHeart
+                              className="flashsales-icon"
+                              onClick={() => addToWishlist(product)}
+                            />
                           </div>
                           <div className="flashsales-icon-background">
                             <FiEye className="flashsales-icon" />
@@ -375,7 +385,10 @@ const Homepage = () => {
                       />
                       <div className="flashsales-icon-container">
                         <div className="flashsales-icon-background">
-                          <AiOutlineHeart className="flashsales-icon" />
+                          <AiOutlineHeart
+                            className="flashsales-icon"
+                            onClick={() => addToWishlist(product)}
+                          />
                         </div>
                         <div className="flashsales-icon-background">
                           <FiEye className="flashsales-icon" />

@@ -13,6 +13,10 @@
     padding: 0.75rem;
 }
 
+.top-container-text{
+    color: var(--primary-text-lightcolor);
+}
+
 .top-header-container a {
     color: var(--primary-text-lightcolor);
 }

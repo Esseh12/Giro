@@ -16,6 +16,14 @@ p {
     margin-top: 2rem;
 }
 
+.footer__description{
+    color: var(--primary-text-lightcolor);
+}
+
+.footer__section--support p{
+    color: var(--primary-text-lightcolor);
+}
+
 .footer_sub_section {
     display: flex;
     gap: 6rem;

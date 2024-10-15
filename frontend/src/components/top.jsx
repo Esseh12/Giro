@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 function Top() {
   return (
     <div className="top-header-container">
-      <p>
+      <p className="top-container-text">
         Summer Sale For Swim Suits And Free Express Delivery
         <span> - OFF 50%!</span>
       </p>

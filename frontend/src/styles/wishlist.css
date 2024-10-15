@@ -1,0 +1,37 @@
+.wishlist-items{
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    list-style: none;
+    row-gap: 2.5rem;
+}
+
+.wishlist-img{
+    height: 9rem;
+    width: 11rem;
+}
+
+.wishlist-single-image{
+    height: 15rem;
+    width: 17rem;
+}
+
+.wishlist-details{
+    margin-top: 1rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+}
+
+.wishlist-icon-container {
+    top: 15px;
+    right: 20px;
+}
+
+.wishlist-icon-background{
+    height: 2.335rem;
+    width: 2.335rem;
+}
+
+.wishlist-icon {
+    font-size: 1.2rem;
+}
