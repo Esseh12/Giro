@@ -5,7 +5,7 @@ from flask import Blueprint, jsonify, request, abort, make_response
 from models.db import getDB
 from werkzeug.security import generate_password_hash, check_password_hash
 from uuid import uuid4
-from ..utils import validate_email
+from utils import validate_email
 
 
 users = Blueprint('users', __name__)
