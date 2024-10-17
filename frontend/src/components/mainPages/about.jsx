@@ -16,6 +16,7 @@ import { CiTwitter } from "react-icons/ci";
 import { FaInstagram } from "react-icons/fa";
 import { FiLinkedin } from "react-icons/fi";
 import Stats from "../stats";
+import { LazyLoadImage } from "react-lazy-load-image-component";
 
 const About = () => {
   // for card slider <meet the team section>
@@ -26,23 +27,35 @@ const About = () => {
   const data = [
     {
       image: teamate_one,
-      name: "Adebayo Adeyemi",
+      name: "Jonas Paul",
       role: "Founder",
-      socials: [<CiTwitter />, <FaInstagram />, <FiLinkedin />],
+      socials: [
+        <CiTwitter key="twitter" />,
+        <FaInstagram key="instagram" />,
+        <FiLinkedin key="linkedin" />,
+      ],
       alt: "portrait photograph of the Founder Adebayo Adeyemi",
     },
     {
       image: teamate_two,
-      name: "Onyeka Emeka",
+      name: "Emily Reed",
       role: "Chief Technology Officer",
-      socials: [<CiTwitter />, <FaInstagram />, <FiLinkedin />],
+      socials: [
+        <CiTwitter key="twitter" />,
+        <FaInstagram key="instagram" />,
+        <FiLinkedin key="linkedin" />,
+      ],
       alt: "portrait photograph of the Chief Technology Officer Onyeka Emeka",
     },
     {
       image: teamate_three,
-      name: "Ngozi Obi",
+      name: "Nicolas James",
       role: "Product Designer",
-      socials: [<CiTwitter />, <FaInstagram />, <FiLinkedin />],
+      socials: [
+        <CiTwitter key="twitter" />,
+        <FaInstagram key="instagram" />,
+        <FiLinkedin key="linkedin" />,
+      ],
       alt: "portrait photograph of the Product Designer Ngozi Obi",
     },
   ];
@@ -78,7 +91,7 @@ const About = () => {
           <div className="our-story-text">
             <h1>Our Story</h1>
             <p className="story-text-first_paragraph">
-              Founded in 2015, Giro is Nigeria's leading online shopping
+              Founded in 2015, Giro is Nigeria&#39;s leading online shopping
               marketplace <br /> with a strong presence in Lagos. Supported by a
               broad range of tailored <br /> marketing, data, and service
               solutions, Giro boasts 10,500 sellers and 300 <br />
@@ -145,7 +158,7 @@ const About = () => {
           {data.map((d, index) => (
             <div className="team-member" key={index}>
               <div className="team-photo">
-                <img src={d.image} alt={d.alt} loading="lazy" />
+                <LazyLoadImage src={d.image} alt={d.alt} effect="blur" />
               </div>
 
               <div className="teamate_description">

@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { useNavigate, Link } from "react-router-dom";
+import { LazyLoadImage } from "react-lazy-load-image-component";
 import axios from "axios";
 import "../../styles/login-middle.css";
 import Top from "../top";
@@ -118,7 +119,7 @@ const Signup = () => {
       <Top />
       <AuthNavbar />
       <div className="signup-container">
-        <img
+        <LazyLoadImage
           src={loginImg}
           alt="A cart, a phone and two shopping bags"
           className="signup-image"
