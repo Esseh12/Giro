@@ -1,4 +1,5 @@
 import "../../styles/cart.css";
+import axios from "axios";
 import { useContext, useState } from "react";
 import { CartContext } from "./Homepage/cartContext";
 import visaIcon from "../../assets/Visa.svg";
@@ -13,6 +14,17 @@ const Checkout = () => {
 
   const handleCheckboxChange = () => {
     setIsChecked(!isChecked); // Toggle the checkbox value
+  };
+
+  const handleCheckout = () => {
+    axios
+      .post("https://giro-fz5q.onrender.com//checkout", cartItems)
+      .then((response) => {
+        console.log(response);
+      })
+      .catch((error) => {
+        console.log(error);
+      });
   };
 
   return (
@@ -205,7 +217,9 @@ const Checkout = () => {
                 <label htmlFor="delivery payment">Cash on delivery</label>
               </div>
             </div>
-            <button className="place-order-btn">Place Order</button>
+            <button className="place-order-btn" onClick={handleCheckout}>
+              Place Order
+            </button>
           </div>
         </div>
       </div>

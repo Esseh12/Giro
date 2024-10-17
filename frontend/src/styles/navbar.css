@@ -1,9 +1,9 @@
 #navbar{
     display: flex;
     height: 6rem;
-    justify-content: center;
+    /* padding: 0rem 3rem; */
+    justify-content: space-evenly;
     align-items: center;
-    gap: 13rem;
     position: sticky;
     top: 0;
     background-color: #fff;
@@ -20,6 +20,12 @@
 .navbar-logo {
     width: 2.8rem;
     height: 2.8rem;
+}
+
+.navbar-links-container{
+    display: flex;
+    align-items: center;
+    gap: 12rem;
 }
 
 .navbar-links{
@@ -175,5 +181,94 @@
     to {
         opacity: 1;
         transform: translateY(0);
+    }
+}
+
+
+
+/* hamburger menu */
+.nav__toggle,
+.nav__close {
+    font-size: 2.5rem;
+    color: var(--title-color);
+    cursor: pointer;
+}
+
+.nav__close {
+    position: absolute;
+    top: 1rem;
+    right: 1.5rem;
+}
+
+.show-menu {
+    right: 0;
+}
+
+.nav__toggle,
+.nav__close{
+    display: none;
+}
+
+@media screen and (min-width: 200px) and (max-width: 324px) {
+    #navbar{
+        display: flex;
+        height: 4.5rem;
+        padding: 0rem 0.8rem;
+        justify-content: space-between;
+    }
+
+    .navbar-brand{
+        font-size: 1.2rem;
+    }
+
+    .navbar-logo {
+        width: 2.2rem;
+        height: 2.2rem;
+    }
+
+    .nav__toggle,
+    .nav__close {
+        font-size: 2.2rem;
+        margin-top: 10px;
+    }
+
+    .navbar-links-container{
+        display: none;
+    }
+
+    .nav__toggle{
+        display: block;
+    }
+}
+
+@media screen and (min-width: 401px) and (max-width: 759px) {
+    #navbar{
+        display: flex;
+        height: 5.5rem;
+        padding: 0rem 1rem;
+        justify-content: space-between;
+    }
+
+    .navbar-brand{
+        font-size: 1.5rem;
+    }
+
+    .navbar-logo {
+        width: 2.4rem;
+        height: 2.4rem;
+    }
+
+    .nav__toggle,
+    .nav__close {
+        font-size: 2.4rem;
+        margin-top: 10px;
+    }
+
+    .navbar-links-container{
+        display: none;
+    }
+
+    .nav__toggle{
+        display: block;
     }
 }

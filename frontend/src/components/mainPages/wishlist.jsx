@@ -12,8 +12,12 @@ import "../../styles/homepage.css";
 import "../../styles/wishlist.css";
 
 const WishList = () => {
-  const { wishlistItems, removeFromWishlist, getTotalWishlistItems } =
-    useContext(WishlistContext);
+  const {
+    wishlistItems,
+    removeFromWishlist,
+    getTotalWishlistItems,
+    clearWishlist,
+  } = useContext(WishlistContext);
   const { addToCart } = useContext(CartContext); // Get the addToCart function from the context
   const [forYouItems, setForYouItems] = useState([]);
   const navigate = useNavigate(); // Initialize the navigate function
@@ -44,11 +48,13 @@ const WishList = () => {
       <div className="wishlist-main-section">
         {/* wishlist */}
         <section className="wishlist-top-section">
-          <div>
+          <div className="wishlist-top-subsection">
             <p>Wishlist ({getTotalWishlistItems()})</p>
-            <button>Move All To Cart</button>
+            <button className="wishlist-button" onClick={clearWishlist}>
+              Clear Wishlist
+            </button>
           </div>
-          <div>
+          <div className="wishlist-item-container">
             {wishlistItems.length === 0 ? (
               <p>Your wishlist is empty.</p>
             ) : (
@@ -96,8 +102,8 @@ const WishList = () => {
               {/* Add an icon or visual indicator */}
               <p className="homepage-title">Just For You</p>
             </div>
-            <button onClick={() => navigate("/")} className="load-more-button">
-              Load More
+            <button onClick={() => navigate("/")} className="wishlist-button">
+              See All
             </button>
           </div>
           <div>
