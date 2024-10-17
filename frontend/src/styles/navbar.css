@@ -1,8 +1,8 @@
 #navbar{
     display: flex;
     height: 6rem;
-    /* padding: 0rem 3rem; */
-    justify-content: space-evenly;
+    padding: 0rem 3rem;
+    justify-content: space-between;
     align-items: center;
     position: sticky;
     top: 0;
@@ -25,7 +25,8 @@
 .navbar-links-container{
     display: flex;
     align-items: center;
-    gap: 12rem;
+    justify-content: space-between;
+    gap: 7rem;
 }
 
 .navbar-links{
@@ -241,7 +242,7 @@
     }
 }
 
-@media screen and (min-width: 401px) and (max-width: 759px) {
+@media screen and (min-width: 324px) and (max-width: 759px) {
     #navbar{
         display: flex;
         height: 5.5rem;
