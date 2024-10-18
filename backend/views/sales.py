@@ -1,5 +1,5 @@
 """ Module contains endpoints concerning sales """
-from flask import Blueprint, jsonify, abort, request
+from flask import Blueprint, jsonify, abort, request, session
 from models.db import getDB
 
 
@@ -10,9 +10,11 @@ def checkout():
   """ handles checkout """
   from app import mail
 
-  user_id = request.cookies.get('token')
-  if not user_id:
+#   user_id = request.cookies.get('token')
+  if 'user_id' not in session:
     abort(401, "Not Authorized: You are not logged in!")
+
+  user_id = session['user_id']
 
   db = getDB()
   cur = db.cursor()

@@ -1,7 +1,7 @@
 """
 This module contains route for the users activities like login, signup etc
 """
-from flask import Blueprint, jsonify, request, abort, make_response
+from flask import Blueprint, jsonify, request, abort, make_response, session
 from models.db import getDB
 from werkzeug.security import generate_password_hash, check_password_hash
 from uuid import uuid4
@@ -87,18 +87,25 @@ def login():
   db.close()
   new_obj = {x: user[x] for x in user.keys() if x != "password"}
 
-  res = make_response(jsonify({"data": new_obj, "status": 200}))
-  res.set_cookie("token", user.get('id'))
-  return res, 200
+#   res = make_response(jsonify({"data": new_obj, "status": 200}))  
+#   res.set_cookie("token", user.get('id'))
+#   return res, 200
+  session['user_id'] = user.get('id')
+  return jsonify({"data": new_obj, "status": 200})    
 
 
 @users.get('/profile')
 def profile():
   """ handle user profile page """
   # print(list(request.cookies.items()))
+#   user_id = request.cookies.get('token')
   user_id = request.cookies.get('token')
-  if not user_id:
+
+  if 'user_id' not in session:
     abort(401, "Not Authorized: You are not logged in!")
+  
+  user_id = session['user_id']
+
 
   db = getDB()
   cur = db.cursor()
@@ -111,12 +118,14 @@ def profile():
 @users.get('/logout')
 def logout():
   """ handle logout endpoint """
+
+  session.pop('user_id', None)
   res = make_response(
     jsonify(
       {'msg': 'logged out successfully', 'status': 200}
     )
   )
-  res.set_cookie('token', '', expires=0)
+#   res.set_cookie('token', '', expires=0)
   return res
 
 
@@ -128,9 +137,11 @@ def update_profile():
 
   data = request.json
 
+  if 'user_id' not in session:
+    abort(401, "Not Authorized: You are not logged in!")
+
   if not data:
     abort(400, "No data provided")
-
 
   db = getDB()
   db.execute("PRAGMA journal_mode=WAL;")

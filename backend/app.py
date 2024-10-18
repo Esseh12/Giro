@@ -21,6 +21,7 @@ if ENABLE_EMAIL_SERVICE == 'True':  # so that app can run successfully without e
 
 # initialize flask app
 app = Flask(__name__)
+app.secret_key = 'SOMEsecrectretekeyynnsjdhdh345678' # for session
 
 # HANDLE cors
 CORS(app, supports_credentials=True)
