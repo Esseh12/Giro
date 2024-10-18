@@ -40,7 +40,7 @@ const Navbar = () => {
   return (
     <>
       <nav id="navbar" className="navbar">
-        <NavLink to="/home" className="navbar-logo-container">
+        <NavLink to="/" className="navbar-logo-container">
           <img src={logo} alt="Giro logo" className="navbar-logo" />
           <h2 className="navbar-brand">Giro</h2>
         </NavLink>
@@ -67,65 +67,66 @@ const Navbar = () => {
               </NavLink>
             </li>
           </ul>
-        </div>
-        <div className="navbar-search-container">
-          <div className="navbar-search-box">
-            <input
-              type="text"
-              className="navbar-search-input"
-              placeholder="Search"
-            />
-            <IoMdSearch className="navbar-search-icon" />
-          </div>
-          <div className="navbar-icons">
-            <div className="cart-container">
-              <FaRegHeart
-                className="navbar-icon"
-                onClick={handleWishlistClick}
-              />
-              <div className="cart-quantity">
-                <p>{totalWishlistItems}</p>
-              </div>
-            </div>
-            <div className="cart-container">
-              <BsCart3 className="navbar-icon" onClick={handleCartClick} />
-              <div className="cart-quantity">
-                <p>{totalItems}</p>
-              </div>
-            </div>
 
-            {/* icon with dropdowns */}
-            <div className="user-icon-container">
-              <FaRegUser
-                className={`navbar-icon user-icon ${
-                  isDropdownOpen ? "active" : ""
-                }`}
-                onClick={toggleDropdown}
+          <div className="navbar-search-container">
+            <div className="navbar-search-box">
+              <input
+                type="text"
+                className="navbar-search-input"
+                placeholder="Search"
               />
-              {isDropdownOpen && (
-                <div className="dropdown-content glass-bg">
-                  <div className="dropdown-content-subcontainer">
-                    <FaRegUser className="dropdown-icon" />
-                    <Link to="/profile">Manage My Account</Link>
-                  </div>
-                  <div className="dropdown-content-subcontainer">
-                    <LuShoppingBag className="dropdown-icon" />
-                    <Link to="#more">My Order</Link>
-                  </div>
-                  <div className="dropdown-content-subcontainer">
-                    <FaRegTimesCircle className="dropdown-icon" />
-                    <Link to="#more">My Cancellations</Link>
-                  </div>
-                  <div className="dropdown-content-subcontainer">
-                    <CiStar className="dropdown-icon" />
-                    <Link to="#more">My Reviews</Link>
-                  </div>
-                  <div className="dropdown-content-subcontainer">
-                    <TbLogout2 className="dropdown-icon" />
-                    <Link to="#more">Logout</Link>
-                  </div>
+              <IoMdSearch className="navbar-search-icon" />
+            </div>
+            <div className="navbar-icons">
+              <div className="cart-container">
+                <FaRegHeart
+                  className="navbar-icon"
+                  onClick={handleWishlistClick}
+                />
+                <div className="cart-quantity">
+                  <p>{totalWishlistItems}</p>
                 </div>
-              )}
+              </div>
+              <div className="cart-container">
+                <BsCart3 className="navbar-icon" onClick={handleCartClick} />
+                <div className="cart-quantity">
+                  <p>{totalItems}</p>
+                </div>
+              </div>
+
+              {/* icon with dropdowns */}
+              <div className="user-icon-container">
+                <FaRegUser
+                  className={`navbar-icon user-icon ${
+                    isDropdownOpen ? "active" : ""
+                  }`}
+                  onClick={toggleDropdown}
+                />
+                {isDropdownOpen && (
+                  <div className="dropdown-content glass-bg">
+                    <div className="dropdown-content-subcontainer">
+                      <FaRegUser className="dropdown-icon" />
+                      <Link to="/profile">Manage My Account</Link>
+                    </div>
+                    <div className="dropdown-content-subcontainer">
+                      <LuShoppingBag className="dropdown-icon" />
+                      <Link to="#more">My Order</Link>
+                    </div>
+                    <div className="dropdown-content-subcontainer">
+                      <FaRegTimesCircle className="dropdown-icon" />
+                      <Link to="#more">My Cancellations</Link>
+                    </div>
+                    <div className="dropdown-content-subcontainer">
+                      <CiStar className="dropdown-icon" />
+                      <Link to="#more">My Reviews</Link>
+                    </div>
+                    <div className="dropdown-content-subcontainer">
+                      <TbLogout2 className="dropdown-icon" />
+                      <Link to="#more">Logout</Link>
+                    </div>
+                  </div>
+                )}
+              </div>
             </div>
           </div>
         </div>
