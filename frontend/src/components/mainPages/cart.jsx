@@ -46,7 +46,7 @@ const Cart = () => {
                   <button
                     className="quantity-btn"
                     onClick={() => {
-                      addToCart(item);
+                      removeFromCart(item);
                     }}
                   >
                     -
@@ -55,7 +55,7 @@ const Cart = () => {
                   <button
                     className="quantity-btn"
                     onClick={() => {
-                      removeFromCart(item);
+                      addToCart(item);
                     }}
                   >
                     +
