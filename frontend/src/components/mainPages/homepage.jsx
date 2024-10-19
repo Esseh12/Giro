@@ -263,7 +263,7 @@ const Homepage = () => {
           <div className="flashsales-top-container">
             <h2 className="new-arrival-heading">Best Selling Products</h2>
             <div className="flashsales-nav-arrow">
-              <button>View All</button>
+              <button className="load-more-button">View All</button>
             </div>
           </div>
           <div>
