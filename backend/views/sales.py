@@ -9,8 +9,17 @@ sales = Blueprint('sales', __name__)
 def checkout():
   """ handles checkout """
   from app import mail
+  try:
+    data = request.json
+  except:
+    abort(415, 'invalid json body')
+
 
 #   user_id = request.cookies.get('token')
+  return jsonify({'status': 201,         'msg': 'sales created'}), 201
+
+
+'''
   if 'user_id' not in session:
     abort(401, "Not Authorized: You are not logged in!")
 
@@ -39,3 +48,5 @@ def checkout():
   except Exception as e:
     print(e)
     return jsonify({'status': 401, 'msg': 'Sales not successfull'}), 401
+'''
+
