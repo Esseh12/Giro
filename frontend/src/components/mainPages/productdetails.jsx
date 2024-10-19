@@ -1,110 +1,174 @@
 import { useState, useEffect, useContext } from "react";
 import { useParams } from "react-router-dom";
+import "../../styles/productDetail.css";
 import Top from "../top";
 import Navbar from "../navbar";
 import Footer from "../footer";
 import Loader from "../loader";
 import { AiOutlineHeart } from "react-icons/ai";
+import { FaTruckFast } from "react-icons/fa6";
+import { TfiReload } from "react-icons/tfi";
 import { CartContext } from "./Homepage/cartContext";
 import { WishlistContext } from "./Homepage/wishlistContext";
 
 const ProductDetails = () => {
-  const { id } = useParams(); // Get the product ID from the URL
-  const [product, setProduct] = useState(null); // State to store product details
-  const [loading, setLoading] = useState(true); // State to manage loading state
-  const { addToCart, removeFromCart } = useContext(CartContext); // Get the addToCart function from the context
-  const { addToWishlist } = useContext(WishlistContext); // Get the addToWishlist function from the context
+  const { id } = useParams();
+  const [product, setProduct] = useState(null);
+  const [loading, setLoading] = useState(true);
+  const { addToCart, removeFromCart } = useContext(CartContext);
+  const { addToWishlist } = useContext(WishlistContext);
 
-  // Fetch product details from API
   const fetchProduct = async (id) => {
     try {
       const response = await fetch(
         `https://giro-fz5q.onrender.com/products/${id}`
       );
-      const data = await response.json(); // Parse the JSON data
+      const data = await response.json();
       console.log(data.data);
 
-      // Set the product data
       setProduct(data.data.product);
-      setLoading(false); // Stop loading
+      setLoading(false);
     } catch (error) {
       console.error("Error fetching product details:", error);
-      setLoading(false); // Stop loading even if there's an error
+      setLoading(false);
     }
   };
 
-  // Fetch product data when the component mounts or when 'id' changes
   useEffect(() => {
-    fetchProduct(id); // Pass the product ID to fetchProduct
+    fetchProduct(id);
   }, [id]);
 
-  // Display loading state
   if (loading) {
-    return <Loader />; // Show the loader component
+    return <Loader />;
   }
 
-  // Display message if product is not found
   if (!product) {
     return <div>Product not found</div>;
   }
 
-  // Render the product details
   return (
     <>
       <Top />
       <Navbar />
-      <div>
-        {/* breadcrumb link */}
-        <span>
-          <a href="">Home</a> / <a href={"/product/" + product.id}>Product</a>
-        </span>
-        {/* product detail section */}
-        <div>
-          {/* product image div */}
-          <div>
-            <img src={`/products/${product.image_url}`} alt={product.name} />
-            <img src={`/products/${product.image_url}`} alt={product.name} />
-            <img src={`/products/${product.image_url}`} alt={product.name} />
-            <img src={`/products/${product.image_url}`} alt={product.name} />
-          </div>
-          {/* product details and price div */}
-          <div>
-            <h1>{product.name}</h1>
-            <span>
-              <p>{product.rating}</p> | <p>{product.stock}</p>
-            </span>
-            <p>${product.price}</p>
-            <p>{product.description}</p>
-          </div>
-          {/* checkout and delivery div */}
-          <div>
-            <div>
-              <div>
-                <p>-</p>
-                <p>0</p>
-                <p>+</p>
-              </div>
-              <button>Buy Now</button>
-              <div>
-                <AiOutlineHeart
-                  className="flashsales-icon"
-                  onClick={() => addToWishlist(product)}
-                />
-              </div>
+      <div className="product-details-container">
+        {/* Breadcrumb */}
+        <div className="breadcrumb">
+          <span>
+            <a href="/">Home</a> /{" "}
+            <a href={"/product/" + product.id}>Product</a>
+          </span>
+        </div>
+
+        {/* Product Detail Section */}
+        <div className="product-section">
+          {/* Product Image Section */}
+          <div className="product-image-gallery">
+            <div className="product-image">
+              <img
+                src={`/products/${product.image_url}`}
+                alt={product.name}
+                className="product-image1"
+              />
             </div>
-            <div>
-              <div>
-                <p>Delivery</p>
-                <span>
-                  <p>Free delivery</p>
-                  <p>Enter your postal code for Delivery Avaliablity</p>
-                </span>
+            <div className="product-image">
+              <img
+                src={`/products/${product.image_url}`}
+                alt={product.name}
+                className="product-image2"
+              />
+            </div>
+            <div className="product-image">
+              <img
+                src={`/products/${product.image_url}`}
+                alt={product.name}
+                className="product-image3"
+              />
+            </div>
+            <div className="product-image image-4">
+              <img
+                src={`/products/${product.image_url}`}
+                alt={product.name}
+                className="product-image4"
+              />
+            </div>
+          </div>
+
+          {/* Product Details and Price Section */}
+          <div className="product-info">
+            <div className="product-info-subsection">
+              <h1 className="product-name">{product.name}</h1>
+              <div className="product-meta">
+                <p className="product-rating">
+                  {Array(product.rating)
+                    .fill("⭐")
+                    .map((star, index) => (
+                      <span key={index}>{star}</span>
+                    ))}
+                </p>{" "}
+                |<p className="product-stock">Stock ({product.stock})</p>
+              </div>
+              <p className="product-price">${product.price}</p>
+              <p className="product-description">{product.description}</p>
+            </div>
+
+            {/* Checkout and Delivery Section */}
+            <div className="product-checkout">
+              <div className="product-checkout-subsection">
+                <div className="product-quantity-control">
+                  <button
+                    className="quantity-button"
+                    onClick={() => removeFromCart(product)}
+                    disabled
+                  >
+                    -
+                  </button>
+                  <span className="product-quantity">0</span>
+                  <button
+                    className="quantity-button"
+                    onClick={() => addToCart(product)}
+                    disabled
+                  >
+                    +
+                  </button>
+                </div>
+                <button
+                  className="buy-now-button"
+                  onClick={() => addToCart(product)}
+                >
+                  Buy Now
+                </button>
+                <div className="wishlist-icon">
+                  <AiOutlineHeart
+                    className="flashsales-icon"
+                    onClick={() => addToWishlist(product)}
+                  />
+                </div>
+              </div>
+
+              <div className="delivery-info">
+                <div className="delivery-item">
+                  <FaTruckFast className="delivery-icon" />
+                  <span className="delivery-details">
+                    <p>Free delivery</p>
+                    <p>Enter your postal code for Delivery Availability</p>
+                  </span>
+                </div>
+                <div className="return-policy">
+                  <TfiReload className="return-icon" />
+                  <span className="return-details">
+                    <p>Return Delivery</p>
+                    <p>Free 30 Days Delivery Returns.</p>
+                  </span>
+                </div>
               </div>
             </div>
           </div>
         </div>
-        {/* related items section */}
-        <div></div>
+
+        {/* Related Items Section */}
+        <div className="related-items">
+          {/* You can add related products here */}
+        </div>
       </div>
       <Footer />
     </>
