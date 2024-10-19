@@ -1,9 +1,9 @@
 #navbar{
     display: flex;
     height: 6rem;
-    justify-content: center;
+    padding: 0rem 3rem;
+    justify-content: space-between;
     align-items: center;
-    gap: 13rem;
     position: sticky;
     top: 0;
     background-color: #fff;
@@ -20,6 +20,13 @@
 .navbar-logo {
     width: 2.8rem;
     height: 2.8rem;
+}
+
+.navbar-links-container{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 7rem;
 }
 
 .navbar-links{
@@ -177,3 +184,5 @@
         transform: translateY(0);
     }
 }
+
+
