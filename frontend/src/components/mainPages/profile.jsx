@@ -3,7 +3,7 @@ import Top from "../top";
 import Navbar from "../navbar";
 import Footer from "../footer";
 import "../../styles/profile.css";
-import axios from "axios";
+// import axios from "axios";
 import { Link } from "react-router-dom";
 import { VscEyeClosed, VscEye } from "react-icons/vsc";
 
@@ -24,15 +24,21 @@ const Profile = () => {
 
   const fetchUserData = async () => {
     try {
-      const response = await axios.get(
+      const response = await fetch(
         "https://giro-fz5q.onrender.com/auth/profile",
         {
-          withCredentials: true,
+          method: "GET",
+          credentials: "include",
         }
       );
-      setUserData(response.data.data);
+
+      if (!response.ok) {
+        throw new Error(`HTTP error! status: ${response.status}`);
+      }
+      const data = await response.json(); // Parse the response as JSON
+      setUserData(data.data);
     } catch (error) {
-      console.log(`Ese look at this ${error}`);
+      console.log(error);
     }
   };
 
@@ -80,42 +86,62 @@ const Profile = () => {
                   <label htmlFor="firstname" className="form-label">
                     First Name
                   </label>
-                  <input type="text" className="form-input" />
+                  <input
+                    type="text"
+                    className="form-input"
+                    name="First Name"
+                    id="firstname"
+                  />
                 </div>
                 <div className="form-sub-group">
                   <label htmlFor="lastname" className="form-label">
                     Last Name
                   </label>
-                  <input type="text" className="form-input" />
+                  <input
+                    type="text"
+                    className="form-input"
+                    name="Last Name"
+                    id="lastname"
+                  />
                 </div>
               </div>
               <div className="form-group">
                 <div className="form-sub-group">
-                  <label htmlFor="email" className="form-label">
+                  <label htmlFor="Email" className="form-label">
                     Email
                   </label>
                   <input
+                    id="Email"
                     type="email"
                     className="form-input"
-                    // value={userData.email}
+                    name="Email"
+                    autoComplete="Email"
                   />
                 </div>
                 <div className="form-sub-group">
                   <label htmlFor="address" className="form-label">
                     Address
                   </label>
-                  <input type="text" className="form-input" />
+                  <input
+                    type="text"
+                    className="form-input"
+                    name="Address"
+                    autoComplete="Address"
+                    id="address"
+                  />
                 </div>
               </div>
               <div className="form-group">
                 <div className="form-sub-group">
-                  <label htmlFor="current password" className="form-label">
-                    password changes
+                  <label htmlFor="password" className="form-label">
+                    Password (Leave blank to keep the same)
                   </label>
                   <div className="form-password-container">
                     <input
                       type={eyeClosed ? "password" : "text"}
                       className="form-input"
+                      name="password"
+                      id="password"
                     />
                     {eyeClosed ? (
                       <VscEyeClosed
@@ -133,6 +159,7 @@ const Profile = () => {
                     <input
                       type={eyeClosed ? "password" : "text"}
                       className="form-input"
+                      name="password"
                     />
                     {eyeClosed ? (
                       <VscEyeClosed
@@ -150,6 +177,7 @@ const Profile = () => {
                     <input
                       type={eyeClosed ? "password" : "text"}
                       className="form-input"
+                      name="password"
                     />
                     {eyeClosed ? (
                       <VscEyeClosed
@@ -168,7 +196,12 @@ const Profile = () => {
                   <label htmlFor="phone number" className="form-label">
                     Phone Number
                   </label>
-                  <input type="text" className="form-input" />
+                  <input
+                    type="text"
+                    className="form-input"
+                    name="phoneNumber"
+                    id="phone number"
+                  />
                 </div>
               </div>
             </div>

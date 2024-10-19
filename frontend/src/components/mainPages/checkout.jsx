@@ -2,11 +2,13 @@ import "../../styles/cart.css";
 import axios from "axios";
 import { useContext, useState } from "react";
 import { CartContext } from "./Homepage/cartContext";
+import Top from "../top";
+import Navbar from "../navbar";
+import Footer from "../footer";
 import visaIcon from "../../assets/Visa.svg";
 import verveIcon from "../../assets/verve-icon.png";
 import masterCardIcon from "../../assets/masterCard.svg";
 import paypalIcon from "../../assets/paypal-icon.webp";
-// import { useNavigate } from "react-router-dom";
 
 const Checkout = () => {
   const { cartItems, getCartTotal } = useContext(CartContext);
@@ -21,6 +23,7 @@ const Checkout = () => {
       .post("https://giro-fz5q.onrender.com//checkout", cartItems)
       .then((response) => {
         console.log(response);
+        console.log(cartItems);
       })
       .catch((error) => {
         console.log(error);
@@ -29,6 +32,8 @@ const Checkout = () => {
 
   return (
     <>
+      <Top />
+      <Navbar />
       <div className="checkout-container">
         <span className="navigation-link">
           <a href="/">Home</a> / <a href="/cart">Cart</a> /
@@ -223,6 +228,7 @@ const Checkout = () => {
           </div>
         </div>
       </div>
+      <Footer />
     </>
   );
 };

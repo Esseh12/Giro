@@ -9,6 +9,7 @@ import Profile from "./components/mainPages/profile";
 import Cart from "./components/mainPages/cart";
 import Checkout from "./components/mainPages/checkout";
 import WishList from "./components/mainPages/wishlist";
+import ProductDetails from "./components/mainPages/productdetails";
 import axios from "axios";
 
 function App() {
@@ -27,6 +28,7 @@ function App() {
           <Route path="/cart" element={<Cart />} />
           <Route path="/checkout" element={<Checkout />} />
           <Route path="/wishlist" element={<WishList />} />
+          <Route path="/product/:id" element={<ProductDetails />} />
           <Route path="*" element={<Error404 />} />
         </Routes>
       </BrowserRouter>

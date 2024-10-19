@@ -234,6 +234,7 @@
 .flashsales-icon-background{
     background-color: var(--primary-text-lightcolor);
     border: 1px solid var(--primary-text-lightcolor);
+    color: var(--primary-black);
     border-radius: 999px;
     height: 2.3rem;
     width: 2.3rem;

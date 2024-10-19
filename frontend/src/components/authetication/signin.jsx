@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { LazyLoadImage } from "react-lazy-load-image-component";
-import axios from "axios";
+// import axios from "axios";
 import { useNavigate, Link } from "react-router-dom";
 import Top from "../top";
 import AuthNavbar from "./auth_nav";
@@ -23,75 +23,64 @@ const Signin = () => {
     setLoginData({ ...loginData, [e.target.name]: e.target.value });
   };
 
+  const handleEyeOpen = () => {
+    setIsEyeClose(!isEyeClosed);
+  };
+
   const handleFormSubmit = async (e) => {
-    // Prevent the default form submission
     e.preventDefault();
 
-    // Send the form data to the server
     try {
-      const response = await axios.post(
+      const response = await fetch(
         "https://giro-fz5q.onrender.com/auth/login",
-        loginData,
         {
+          method: "POST",
           headers: {
             "Content-Type": "application/json",
           },
-        },
-        {
-          withCredentials: true,
+          credentials: "include", // ensures cookies are sent with cross-origin requests
+          body: JSON.stringify(loginData), // Send the login data in JSON format
         }
       );
 
-      // if account is created successfully
-      if (response.status === 200) {
-        //  send a sucess message and redirect user to homepage
+      if (response.ok) {
         setSuccessMessage("Account login successfully");
 
-        // redirect user to homepage after 1.5 seconds
+        // Redirect user after 1.5 seconds
         setTimeout(() => {
           navigate("/");
         }, 1500);
 
-        // clear form data and error message
+        // Clear form data after success
         setLoginData({
           email: "",
           password: "",
         });
         setErrorMessage("");
+      } else if (response.status === 403) {
+        const errorDetail = (await response.json()).error;
+
+        if (errorDetail === "Password Incorrect!") {
+          setErrorMessage("Invalid credentials");
+        } else if (errorDetail === "No User with that email") {
+          setErrorMessage("No user with that email");
+
+          // Redirect to create account after 2.5 seconds
+          setTimeout(() => {
+            navigate("/create-account");
+          }, 2500);
+        }
+      } else {
+        // Handle other errors
+        setErrorMessage("An error occurred. Please try again.");
       }
     } catch (error) {
-      // if there is an error
-      if (
-        error.status === 403 &&
-        error.response.data.error === "Password Incorrect!"
-      ) {
-        setErrorMessage("Invalid credentials");
-
-        // clear form data and error message
-        setLoginData({
-          email: "",
-          password: "",
-        });
-        setErrorMessage("");
-      }
-
-      // No User with that email
-      else if (
-        error.status === 403 &&
-        error.response.data.error === "No User with that email"
-      ) {
-        setErrorMessage("No user with that email");
-
-        setTimeout(() => {
-          navigate("/create-account");
-        }, 2500);
-      }
+      // General error handling
+      setErrorMessage("An error occurred. Please try again.");
+      console.error(error);
     }
   };
 
-  const handleEyeOpen = () => {
-    setIsEyeClose(!isEyeClosed);
-  };
   return (
     <>
       <Top />
@@ -137,9 +126,7 @@ const Signin = () => {
             <Link to="#forgot-password" className="forgot-password-link">
               Forgot Password?
             </Link>
-            {/* if error message is true return this */}
             {errorMessage && <p style={{ color: "red" }}>{errorMessage}</p>}
-            {/* if sucess message is true return this */}
             {successMessage && (
               <p style={{ color: "green" }}>{successMessage}</p>
             )}
@@ -150,7 +137,7 @@ const Signin = () => {
               LOGIN
             </button>
             <p>
-              New User?
+              New User?{" "}
               <Link
                 to="/create-account"
                 className="signup-login-link signin-login-link"

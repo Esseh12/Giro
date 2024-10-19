@@ -49,7 +49,7 @@ const Cart = () => {
                       addToCart(item);
                     }}
                   >
-                    +
+                    -
                   </button>
                   <p>{item.quantity}</p>
                   <button
@@ -58,7 +58,7 @@ const Cart = () => {
                       removeFromCart(item);
                     }}
                   >
-                    -
+                    +
                   </button>
                 </div>
                 <div>

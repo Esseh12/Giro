@@ -207,9 +207,12 @@ const Homepage = () => {
                             onClick={() => addToWishlist(product)}
                           />
                         </div>
-                        <div className="flashsales-icon-background">
+                        <Link
+                          to={"/product/" + product.id}
+                          className="flashsales-icon-background"
+                        >
                           <FiEye className="flashsales-icon" />
-                        </div>
+                        </Link>
                       </div>
                       <div className="flashsales-cart-option">
                         <p
@@ -286,9 +289,12 @@ const Homepage = () => {
                               onClick={() => addToWishlist(product)}
                             />
                           </div>
-                          <div className="flashsales-icon-background">
+                          <Link
+                            to={"/product/" + product.id}
+                            className="flashsales-icon-background"
+                          >
                             <FiEye className="flashsales-icon" />
-                          </div>
+                          </Link>
                         </div>
                         <div className="flashsales-cart-option">
                           <p
@@ -390,9 +396,12 @@ const Homepage = () => {
                             onClick={() => addToWishlist(product)}
                           />
                         </div>
-                        <div className="flashsales-icon-background">
+                        <Link
+                          to={"/product/" + product.id}
+                          className="flashsales-icon-background"
+                        >
                           <FiEye className="flashsales-icon" />
-                        </div>
+                        </Link>
                       </div>
                       <div className="flashsales-cart-option">
                         <p
