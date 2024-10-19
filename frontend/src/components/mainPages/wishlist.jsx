@@ -1,5 +1,5 @@
 import { useContext, useEffect, useState } from "react";
-import { useNavigate } from "react-router-dom"; // Import useNavigate for navigation
+import { useNavigate, Link } from "react-router-dom"; // Import useNavigate for navigation
 import { WishlistContext } from "./Homepage/wishlistContext";
 import { CartContext } from "./Homepage/cartContext";
 import { BsTrash3 } from "react-icons/bs";
@@ -120,9 +120,12 @@ const WishList = () => {
                           alt={item.name}
                         />
                         <div className="flashsales-icon-container">
-                          <div className="flashsales-icon-background">
+                          <Link
+                            to={"/product/" + item.id}
+                            className="flashsales-icon-background"
+                          >
                             <FiEye className="flashsales-icon" />
-                          </div>
+                          </Link>
                         </div>
                         <div className="flashsales-cart-option">
                           <p
