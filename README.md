@@ -28,7 +28,7 @@ Welcome to Giro, an eCommerce platform designed for easy and seamless shopping. 
 <div style="display: flex">
   <img src="https://chukhondev.netlify.app/static/media/React.f1484e29.svg" alt="react logo" width="35rem" height="35rem">
   <img src="https://vite.dev/logo.svg" alt="vite logo" width="35rem" height="35rem">
-  <img src="https://www.python.org/static/img/python-logo.png" alt="vite logo" width="55rem" height="35rem">
+  <img src="https://www.python.org/static/img/python-logo.png" alt="vite logo" width="65rem" height="35rem">
 </div>
 
 ## Installation
