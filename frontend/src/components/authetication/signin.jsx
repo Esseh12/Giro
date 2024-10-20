@@ -44,6 +44,11 @@ const Signin = () => {
       );
 
       if (response.ok) {
+        const data = await response.json();
+
+        // Store the user's email in localStorage
+        localStorage.setItem("userEmail", data.data.email);
+
         setSuccessMessage("Account login successfully");
 
         // Redirect user after 1.5 seconds

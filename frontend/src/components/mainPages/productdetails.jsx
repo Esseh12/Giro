@@ -137,7 +137,7 @@ const ProductDetails = () => {
                 >
                   Buy Now
                 </button>
-                <div className="wishlist-icon">
+                <div className="product-wishlist-icon">
                   <AiOutlineHeart
                     className="flashsales-icon"
                     onClick={() => addToWishlist(product)}
