@@ -1,6 +1,6 @@
 # Giro - eCommerce App
 
-<img src="https://www.webxpertindia.com/images/ecommerce-solutions.png" alt="image of a cart">
+<img src="https://www.webxpertindia.com/images/ecommerce-solutions.png" alt="image of a cart" height="10rem" width="10rem">
 
 Welcome to Giro, an eCommerce platform designed for easy and seamless shopping. This app is built with modern web technologies and offers users a smooth and efficient online shopping experience.
 
@@ -56,7 +56,7 @@ npm start
 After starting the development server, open your browser and navigate to:
 
 ```bash
-http://localhost:3000
+http://localhost:5173/  #Technology used is Vite
 ```
 
 You can now browse through products, add them to the cart, and proceed with a mock checkout.
