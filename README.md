@@ -1,6 +1,6 @@
 # Giro - eCommerce App
 
-<img src="https://theecommmanager.com/wp-content/uploads/sites/6/2022/11/what-is-a-shopping-cart-in-ecommerce-featured-image-01-1200x630.png" alt="image of a cart">
+<img src="https://www.webxpertindia.com/images/ecommerce-solutions.png" alt="image of a cart">
 
 Welcome to Giro, an eCommerce platform designed for easy and seamless shopping. This app is built with modern web technologies and offers users a smooth and efficient online shopping experience.
 
