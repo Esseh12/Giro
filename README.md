@@ -25,6 +25,10 @@ Welcome to Giro, an eCommerce platform designed for easy and seamless shopping. 
 
 ## Tech Stack
 
+<div style="display: flex">
+  <img src="https://chukhondev.netlify.app/static/media/React.f1484e29.svg" alt="react logo>
+</div>
+
 ## Installation
 
 1. Clone the repository:
