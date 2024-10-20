@@ -1,6 +1,6 @@
 # Giro - eCommerce App
 
-<img src="https://www.webxpertindia.com/images/ecommerce-solutions.png" alt="image of a cart" height="40%" width="100%">
+<img src="https://www.webxpertindia.com/images/ecommerce-solutions.png" alt="image of a cart" height="60%" width="60%">
 
 Welcome to Giro, an eCommerce platform designed for easy and seamless shopping. This app is built with modern web technologies and offers users a smooth and efficient online shopping experience.
 
