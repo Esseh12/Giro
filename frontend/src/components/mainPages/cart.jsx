@@ -46,19 +46,19 @@ const Cart = () => {
                   <button
                     className="quantity-btn"
                     onClick={() => {
-                      addToCart(item);
+                      removeFromCart(item);
                     }}
                   >
-                    +
+                    -
                   </button>
                   <p>{item.quantity}</p>
                   <button
                     className="quantity-btn"
                     onClick={() => {
-                      removeFromCart(item);
+                      addToCart(item);
                     }}
                   >
-                    -
+                    +
                   </button>
                 </div>
                 <div>

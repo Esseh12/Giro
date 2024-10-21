@@ -24,6 +24,8 @@ const Footer = () => {
                 placeholder="Enter your email"
                 aria-placeholder="Enter your email"
                 className="footer__input"
+                name="email"
+                autoComplete="email"
               />
               <BiSolidPaperPlane className="footer__icon footer__icon--plane" />
             </div>

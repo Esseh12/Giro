@@ -207,9 +207,12 @@ const Homepage = () => {
                             onClick={() => addToWishlist(product)}
                           />
                         </div>
-                        <div className="flashsales-icon-background">
+                        <Link
+                          to={"/product/" + product.id}
+                          className="flashsales-icon-background"
+                        >
                           <FiEye className="flashsales-icon" />
-                        </div>
+                        </Link>
                       </div>
                       <div className="flashsales-cart-option">
                         <p
@@ -260,7 +263,7 @@ const Homepage = () => {
           <div className="flashsales-top-container">
             <h2 className="new-arrival-heading">Best Selling Products</h2>
             <div className="flashsales-nav-arrow">
-              <button>View All</button>
+              <button className="load-more-button">View All</button>
             </div>
           </div>
           <div>
@@ -286,9 +289,12 @@ const Homepage = () => {
                               onClick={() => addToWishlist(product)}
                             />
                           </div>
-                          <div className="flashsales-icon-background">
+                          <Link
+                            to={"/product/" + product.id}
+                            className="flashsales-icon-background"
+                          >
                             <FiEye className="flashsales-icon" />
-                          </div>
+                          </Link>
                         </div>
                         <div className="flashsales-cart-option">
                           <p
@@ -390,9 +396,12 @@ const Homepage = () => {
                             onClick={() => addToWishlist(product)}
                           />
                         </div>
-                        <div className="flashsales-icon-background">
+                        <Link
+                          to={"/product/" + product.id}
+                          className="flashsales-icon-background"
+                        >
                           <FiEye className="flashsales-icon" />
-                        </div>
+                        </Link>
                       </div>
                       <div className="flashsales-cart-option">
                         <p

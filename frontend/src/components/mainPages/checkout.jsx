@@ -2,33 +2,59 @@ import "../../styles/cart.css";
 import axios from "axios";
 import { useContext, useState } from "react";
 import { CartContext } from "./Homepage/cartContext";
+import { useNavigate } from "react-router-dom";
+import Top from "../top";
+import Navbar from "../navbar";
+import Footer from "../footer";
+import Modal from "./Homepage/modalPopup";
 import visaIcon from "../../assets/Visa.svg";
 import verveIcon from "../../assets/verve-icon.png";
 import masterCardIcon from "../../assets/masterCard.svg";
 import paypalIcon from "../../assets/paypal-icon.webp";
-// import { useNavigate } from "react-router-dom";
 
 const Checkout = () => {
-  const { cartItems, getCartTotal } = useContext(CartContext);
-  const [isChecked, setIsChecked] = useState(false);
+  const navigate = useNavigate();
+  const [isModalOpen, setIsModalOpen] = useState(false); // Modal visibility state
+  const [modalMessage, setModalMessage] = useState(""); // Message inside modal
+  const { cartItems, getCartTotal, clearCart } = useContext(CartContext);
+  // Retrieve email from localStorage
+  const savedEmail = localStorage.getItem("userEmail"); // Replace "userEmail" with the key you used to store the email
 
-  const handleCheckboxChange = () => {
-    setIsChecked(!isChecked); // Toggle the checkbox value
+  // Prepare the data to send, including cartItems and the saved email
+  const checkoutData = {
+    cartItems, // cartItems is already an array of items
+    email: savedEmail, // Adding the saved email to the checkout data
   };
 
   const handleCheckout = () => {
     axios
-      .post("https://giro-fz5q.onrender.com//checkout", cartItems)
+      .post("https://giro-fz5q.onrender.com//checkout", checkoutData)
       .then((response) => {
-        console.log(response);
+        if (response.status === 201) {
+          setModalMessage(
+            "Your order has been placed successfully! \n Thanks for shopping with Giro💜🎉"
+          );
+          setIsModalOpen(true); // Open modal
+
+          setTimeout(() => {
+            navigate("/");
+          }, 4500);
+          clearCart();
+        }
       })
       .catch((error) => {
         console.log(error);
+        setModalMessage(
+          "There was an error placing your order. Please try again."
+        );
+        setIsModalOpen(true); // Open modal with error message
       });
   };
 
   return (
     <>
+      <Top />
+      <Navbar />
       <div className="checkout-container">
         <span className="navigation-link">
           <a href="/">Home</a> / <a href="/cart">Cart</a> /
@@ -183,8 +209,6 @@ const Checkout = () => {
                     name="bank"
                     id="bank"
                     className="payment-checkbox"
-                    checked={isChecked}
-                    onChange={handleCheckboxChange}
                   />
                   <p className="payment-label">Bank</p>
                 </span>
@@ -223,6 +247,16 @@ const Checkout = () => {
           </div>
         </div>
       </div>
+      <Footer />
+
+      {/* Modal Popup */}
+      {isModalOpen && (
+        <Modal trigger={isModalOpen} onClose={() => setIsModalOpen(false)}>
+          <div className="modal-content">
+            <p>{modalMessage}</p>
+          </div>
+        </Modal>
+      )}
     </>
   );
 };

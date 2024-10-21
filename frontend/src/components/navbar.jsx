@@ -74,6 +74,7 @@ const Navbar = () => {
                 type="text"
                 className="navbar-search-input"
                 placeholder="Search"
+                name="search"
               />
               <IoMdSearch className="navbar-search-icon" />
             </div>

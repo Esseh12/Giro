@@ -130,3 +130,107 @@ p {
     font-size: 18px;
     color: #555;
 }
+
+/* modal popup */
+/* Modal container (background overlay) */
+.modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.6);
+    /* semi-transparent black */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+    /* make sure it appears above other elements */
+}
+
+/* Modal content (popup box) */
+.modal-content {
+    background-color: #fff;
+    /* White background */
+    border-radius: 10px;
+    /* Rounded corners */
+    padding: 20px;
+    width: 80%;
+    max-width: 500px;
+    /* Limit modal size */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    /* Subtle shadow */
+    position: relative;
+    animation: fadeIn 0.3s ease-out;
+    /* Smooth fade-in effect */
+}
+
+/* Modal fade-in animation */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(-10px);
+        /* Slight upward shift */
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+        /* Normal position */
+    }
+}
+
+/* Close button */
+.close-btn {
+    background: none;
+    border: none;
+    font-size: 24px;
+    /* Large 'X' icon */
+    font-weight: bold;
+    color: #333;
+    /* Dark color */
+    cursor: pointer;
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    transition: color 0.3s ease;
+    /* Smooth color transition */
+}
+
+/* Close button hover effect */
+.close-btn:hover {
+    color: var(--primary-text-lightcolor);
+    /* Change to red on hover */
+}
+
+.modal-subcontent{
+    height: 12rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* Modal body (where content is placed) */
+.modal-body {
+    padding: 10px 0;
+    text-align: center;
+    /* Center align content */
+}
+
+/* Button styling for open modal button (optional) */
+.close-btn {
+    background-color: var(--primary-red);
+    /* Primary blue */
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    font-size: 16px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.close-btn:hover {
+    background-color: var(--button-hover-color);
+    /* Darker blue on hover */
+}
