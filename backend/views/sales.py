@@ -14,19 +14,7 @@ def checkout():
   except:
     abort(415, 'invalid json body')
 
-  msg = 'Congratulations! Here is your receipt\n'
-  msg += str(data.get('cartItems')) + '\n'
-
-  client_email = data.get('email')
-
-  try:
-    mail.sendMail('Giro Purchase Receipts', client_email, msg)
-    return jsonify({'status': 201, 'msg': 'sales created'}), 201
-  except Exception as e:
-    print(e)
-    return jsonify({'status': 401, 'msg': 'Sales not successfull'}), 401
-#   user_id = request.cookies.get('token')
-#   return jsonify({'status': 201, 'msg': 'sales created'}), 201
+  return jsonify({'status': 201, 'msg': 'sales created'}), 201
 
 '''
   if 'user_id' not in session:
